@@ -13,7 +13,6 @@ typedef struct {
 
 // O VID não é um dos parâmetros pois ele é escolhido aleatoriamente
 void Inicia(TVoo *aux, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso, char *aeroportoDecolagem, char *aeroportoPouso, int identificadorPista); /*Função para iniciar a execução*/
-void imprime(TVoo aux);
 
 /*Funções para acessar e alterar as informações*/
 int GetVid(TVoo aux);

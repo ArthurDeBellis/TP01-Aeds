@@ -13,10 +13,10 @@ typedef struct {
 } Lista;
 
 //Função inicializa, que irá dar a célula cabeça para a lista.
-void Inicializa(Lista *lista);
+void Inicializa(Lista *list);
 
 //função inserir
-void Inserir(Lista *lista,TVoo voo);
+void Inserir(Lista *list,TVoo voo);
 
 //Busca o vôo pelo identificador e o retorna.
-int ProcuraVoo(Lista *lista, int Id);
+int ProcuraVoo(Lista *list, int Id);

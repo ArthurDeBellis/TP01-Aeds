@@ -16,7 +16,7 @@ typedef struct {
 void Inicializa(Lista *list);
 
 //função inserir
-void Inserir(Lista *list,TVoo voo);
+void Inserir(Lista *list);
 
 //Busca o vôo pelo identificador e o retorna.
 int ProcuraVoo(Lista *list, int Id);

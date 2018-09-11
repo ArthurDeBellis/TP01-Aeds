@@ -2,6 +2,8 @@
 
 Contribuidores:
 
-*PabloVizard - **Pablo**
-*mudobilingue - **Saulo**
-*ArthurDeBellis - **Arthur**
+PabloVizard - **Pablo**
+
+mudobilingue - **Saulo**
+
+ArthurDeBellis - **Arthur**

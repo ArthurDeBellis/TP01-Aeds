@@ -19,22 +19,22 @@ int GetVid(TVoo aux);
 void SetVid(TVoo *aux);
 
 int GetHrDecolagem(TVoo aux);
-void SetHrDecolagem(TVoo *aux, int NovaHr);
+void SetHrDecolagem(TVoo *aux);
 
 int GetMinutosDecolagem(TVoo aux);
-void SetMinutosDecolagem(TVoo *aux, int NovoMinuto);
+void SetMinutosDecolagem(TVoo *aux);
 
 int GetHrPouso(TVoo aux);
-void SetHrPouso(TVoo *aux, int NovaHr);
+void SetHrPouso(TVoo *aux);
 
 int GetMinutosPouso(TVoo aux);
-void SetMinutosPouso(TVoo *aux, int NovoMinuto);
+void SetMinutosPouso(TVoo *aux);
 
 char* GetAeroportoDecolagem(TVoo aux);
-void SetAeroportoDecolagem(TVoo *aux, char *NovoAeroporto);
+void SetAeroportoDecolagem(TVoo *aux);
 
 char* GetAeroportoPouso(TVoo aux);
-void SetAeroportoPouso(TVoo *aux, char *NovoAeroporto);
+void SetAeroportoPouso(TVoo *aux);
 
 int GetIdPista(TVoo aux);
-void SetIdPista(TVoo *aux, int NovaPista);
+void SetIdPista(TVoo *aux);

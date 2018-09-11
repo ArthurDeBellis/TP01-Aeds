@@ -10,7 +10,7 @@ void Inicializa(Lista *list){
   list->ultimo->prox = NULL;
 }
 //Aqui alocamos um novo espaço para a célula a ser inserida e também buscamos o lugar que ela ocupará na lista.
-void inserir(Lista *list){
+void Inserir(Lista *list){
 
   Ponteiro *celulalista = (list->primeiro);
   Ponteiro novacelula = (Ponteiro) malloc(sizeof(Celula));

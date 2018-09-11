@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <malloc.h>
 #include "../Libs/ListadeVoos.h"
 #include "../Libs/voo.h"
 

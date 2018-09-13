@@ -82,43 +82,43 @@ void SetVid(TVoo *aux)
 }
 
 //Função para alterar a hora de decolagem
-void SetHrDecolagem(TVoo *aux, int NovaHr)
+void SetHrDecolagem(TVoo *aux)
 {
-  aux -> horaDecolagem = NovaHr;
+  scanf("%d", &aux -> horaDecolagem);
 }
 
 //Função para alterar os minutos de decolagem
-void SetMinutosDecolagem(TVoo *aux, int NovosMnts)
+void SetMinutosDecolagem(TVoo *aux)
 {
-  aux -> minutosDecolagem = NovosMnts;
+  scanf("%d", &aux -> minutosDecolagem);
 }
 
 //Função para alterar a hora de pouso
-void SetHoraPouso(TVoo *aux, int NovaHr)
+void SetHoraPouso(TVoo *aux)
 {
-  aux -> horaPouso = NovaHr;
+  scanf("%d", &aux -> horaPouso);
 }
 
 //Função para alterar os minutos de pouso
-void SetMinutosPouso(TVoo *aux, int NovosMnts)
+void SetMinutosPouso(TVoo *aux)
 {
-  aux -> minutosPouso = NovosMnts;
+  scanf("%d", &aux -> minutosPouso);
 }
 
 //Função para alterar o aeroporto de decolagem
-void SetAeroportoDecolagem(TVoo *aux, char *NovoAeroporto)
+void SetAeroportoDecolagem(TVoo *aux)
 {
-  strcpy(aux -> aeroportoDecolagem, NovoAeroporto);
+  scanf("%s", aux -> aeroportoDecolagem);
 }
 
 //Função para alterar o aeroporto de pouso
-void SetAeroportoPouso(TVoo *aux, char *NovoAeroporto)
+void SetAeroportoPouso(TVoo *aux)
 {
-  strcpy(aux -> aeroportoPouso, NovoAeroporto);
+  scanf("%s", aux -> aeroportoPouso);
 }
 
 //Função para alterar o identificador da pista
-void SetIdPista(TVoo *aux, int NovaPista)
+void SetIdPista(TVoo *aux)
 {
-  aux -> identificadorPista = NovaPista;
+  scanf("%d", &aux -> identificadorPista);
 }

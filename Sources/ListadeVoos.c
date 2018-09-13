@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
 #include "../Libs/ListadeVoos.h"
 #include "../Libs/voo.h"
 
@@ -12,19 +11,50 @@ void Inicializa(Lista *list){
 }
 //Aqui alocamos um novo espaço para a célula a ser inserida e também buscamos o lugar que ela ocupará na lista.
 void Inserir(Lista *list){
-
+  Ponteiro *novacelula = NULL, *auxiliar = NULL;
   Ponteiro *celulalista = (list->primeiro);
-  Ponteiro novacelula = (Ponteiro) malloc(sizeof(Celula));
-}
-
-void SetVid(TVoo *aux, int NovoVid){
-  int horario = (voo->minutosDecolagem + (voo->horaDecolagem * 60));
+  int horario;
+  novacelula = (Ponteiro) malloc(sizeof(Celula));
+  if(!novacelula){
+    printf("Erro ao alocar memória");
+  }
+  horario = (novacelula->voo->minutosDecolagem + (novacelula->voo->horaDecolagem * 60));
   while(horario < (celulalista->voo->minutosDecolagem+(celulalista->voo->horaDecolagem*60))){
     if (celulalista->prox == NULL){
-      break
+      break;
     }
     else{
-      celulalista = celulalista->prox;
+      auxiliar = celulalista->prox;
+      celulalista = auxiliar;
     }
   }
+  novacelula->prox = celulalista->prox;
+  celulalista->prox = novacelula;
+}
+Celula *ProcuraVoo(Lista *list, int Id){
+    Ponteiro *temp=NULL, *celulaatual=NULL;
+    celulaatual=list->primeiro->prox;
+    while(celulaatual->voo->vid != Id){
+      if (celulalista->prox == NULL){
+        printf("Voo não encontrado.\n");
+        break;
+      }
+      else{
+        temp = celulaatual->prox;
+        celulaatual = temp;
+      }
+    }
+  return celulaatual;
+}
+int RemoverVoo(Lista *list, int Id){
+  Ponteiro *CelulaaRemover= NULL, *antecessor = NULL, *auxiliar = NULL;
+  CelulaaRemover = *ProcuraVoo(*list, Id);
+  antecessor = list->primeiro->prox;
+  while(antecessor->prox != CelulaaRemover){
+    auxiliar = antecessor->prox;
+    antecessor = auxiliar;
+  }
+  antecessor->prox=CelulaaRemover->prox;
+  free(CelulaaRemover);
+  return 0;
 }

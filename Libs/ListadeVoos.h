@@ -22,4 +22,4 @@ void Inserir(Lista *list);
 int RemoverVoo(Lista *list, int Id);
 
 //Busca o vôo pelo identificador e não o remove.
-int ProcuraVoo (Lista *list, int Id);
+Celula *ProcuraVoo (Lista *list, int Id);

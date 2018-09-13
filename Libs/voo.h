@@ -12,29 +12,29 @@ typedef struct {
 /*As horas e minutos foram separadas as para facilitar a execução do programa*/
 
 // Todos os valores serão iniciados com 0
-void Inicia(TVoo *aux); /*Função para iniciar a execução*/
+void Inicia(TVoo *Voo); /*Função para iniciar a execução*/
 
 /*Funções para acessar e alterar as informações*/
-int GetVid(TVoo aux);
-void SetVid(TVoo *aux);
+int GetVid(TVoo Voo);
+void SetVid(TVoo *Voo);
 
-int GetHrDecolagem(TVoo aux);
-void SetHrDecolagem(TVoo *aux);
+int GetHrDecolagem(TVoo Voo);
+void SetHrDecolagem(TVoo *Voo);
 
-int GetMinutosDecolagem(TVoo aux);
-void SetMinutosDecolagem(TVoo *aux);
+int GetMinutosDecolagem(TVoo Voo);
+void SetMinutosDecolagem(TVoo *Voo);
 
-int GetHrPouso(TVoo aux);
-void SetHrPouso(TVoo *aux);
+int GetHrPouso(TVoo Voo);
+void SetHrPouso(TVoo *Voo);
 
-int GetMinutosPouso(TVoo aux);
-void SetMinutosPouso(TVoo *aux);
+int GetMinutosPouso(TVoo Voo);
+void SetMinutosPouso(TVoo *Voo);
 
-char* GetAeroportoDecolagem(TVoo aux);
-void SetAeroportoDecolagem(TVoo *aux);
+char* GetAeroportoDecolagem(TVoo Voo);
+void SetAeroportoDecolagem(TVoo *Voo);
 
-char* GetAeroportoPouso(TVoo aux);
-void SetAeroportoPouso(TVoo *aux);
+char* GetAeroportoPouso(TVoo Voo);
+void SetAeroportoPouso(TVoo *Voo);
 
-int GetIdPista(TVoo aux);
-void SetIdPista(TVoo *aux);
+int GetIdPista(TVoo Voo);
+void SetIdPista(TVoo *Voo);

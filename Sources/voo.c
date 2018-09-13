@@ -5,16 +5,16 @@
 #include "../Libs/voo.h"
 
 //Função inicia
-void Inicia(TVoo *aux)
+void Inicia(TVoo *Voo)
 {
-  aux -> vid = 0;
-  aux -> horaDecolagem = 0;
-  aux -> minutosDecolagem = 0;
-  aux -> horaPouso = 0;
-  aux -> minutosPouso = 0;
-  strcpy(aux -> aeroportoDecolagem, "");
-  strcpy(aux -> aeroportoPouso, "");
-  aux -> identificadorPista = 0;
+  Voo -> vid = 0;
+  Voo -> horaDecolagem = 0;
+  Voo -> minutosDecolagem = 0;
+  Voo -> horaPouso = 0;
+  Voo -> minutosPouso = 0;
+  strcpy(Voo -> aeroportoDecolagem, "");
+  strcpy(Voo -> aeroportoPouso, "");
+  Voo -> identificadorPista = 0;
 
 }
 
@@ -23,51 +23,51 @@ void Inicia(TVoo *aux)
 /*--------------------------------------------------------------------------------------*/
 
 //Função para ler o vid
-int GetVid(TVoo aux)
+int GetVid(TVoo Voo)
 {
-  return (aux.vid);
+  return (Voo.vid);
 }
 
 //Função para ler a hora da decolagem
-int GetHrDecolagem(TVoo aux)
+int GetHrDecolagem(TVoo Voo)
 {
-  return aux.horaDecolagem;
+  return Voo.horaDecolagem;
 }
 
 //Função para ler os minutos da decolagem
-int GetMinutosDecolagem(TVoo aux)
+int GetMinutosDecolagem(TVoo Voo)
 {
-  return aux.minutosDecolagem;
+  return Voo.minutosDecolagem;
 }
 
 //Função para ler a hora do pouso
-int GetHoraPouso(TVoo aux)
+int GetHoraPouso(TVoo Voo)
 {
-  return aux.horaPouso);
+  return Voo.horaPouso);
 }
 
 //Função para ler o vid
-int GetMinutosPouso(TVoo aux)
+int GetMinutosPouso(TVoo Voo)
 {
-  return aux.minutosPouso);
+  return Voo.minutosPouso);
 }
 
 //Função para ler o aeroporto de decolagem
-char* GetAeroportoDecolagem(TVoo aux)
+char* GetAeroportoDecolagem(TVoo Voo)
 {
-  return aux.aeroportoDecolagem);
+  return Voo.aeroportoDecolagem);
 }
 
 //Função para ler o aeroporto de pouso
-char* GetAeroportoPouso(TVoo aux)
+char* GetAeroportoPouso(TVoo Voo)
 {
-  return aux.aeroportoPouso);
+  return Voo.aeroportoPouso);
 }
 
 //Função para ler o identificador da pista
-int GetIdPista(TVoo aux)
+int GetIdPista(TVoo Voo)
 {
-  return aux.identificadorPista);
+  return Voo.identificadorPista);
 }
 
 /*--------------------------------------------------------------------------------------*/
@@ -75,50 +75,50 @@ int GetIdPista(TVoo aux)
 /*--------------------------------------------------------------------------------------*/
 
 //Função para alterar o vid
-void SetVid(TVoo *aux)
+void SetVid(TVoo *Voo)
 {
   srand(time(NULL));
-  aux -> vid = (rand()%1000);
+  Voo -> vid = (rand()%1000);
 }
 
 //Função para alterar a hora de decolagem
-void SetHrDecolagem(TVoo *aux)
+void SetHrDecolagem(TVoo *Voo)
 {
-  scanf("%d", &aux -> horaDecolagem);
+  scanf("%d", &Voo -> horaDecolagem);
 }
 
 //Função para alterar os minutos de decolagem
-void SetMinutosDecolagem(TVoo *aux)
+void SetMinutosDecolagem(TVoo *Voo)
 {
-  scanf("%d", &aux -> minutosDecolagem);
+  scanf("%d", &Voo -> minutosDecolagem);
 }
 
 //Função para alterar a hora de pouso
-void SetHoraPouso(TVoo *aux)
+void SetHoraPouso(TVoo *Voo)
 {
-  scanf("%d", &aux -> horaPouso);
+  scanf("%d", &Voo -> horaPouso);
 }
 
 //Função para alterar os minutos de pouso
-void SetMinutosPouso(TVoo *aux)
+void SetMinutosPouso(TVoo *Voo)
 {
-  scanf("%d", &aux -> minutosPouso);
+  scanf("%d", &Voo -> minutosPouso);
 }
 
 //Função para alterar o aeroporto de decolagem
-void SetAeroportoDecolagem(TVoo *aux)
+void SetAeroportoDecolagem(TVoo *Voo)
 {
-  scanf("%s", aux -> aeroportoDecolagem);
+  scanf("%s", Voo -> aeroportoDecolagem);
 }
 
 //Função para alterar o aeroporto de pouso
-void SetAeroportoPouso(TVoo *aux)
+void SetAeroportoPouso(TVoo *Voo)
 {
-  scanf("%s", aux -> aeroportoPouso);
+  scanf("%s", Voo -> aeroportoPouso);
 }
 
 //Função para alterar o identificador da pista
-void SetIdPista(TVoo *aux)
+void SetIdPista(TVoo *Voo)
 {
-  scanf("%d", &aux -> identificadorPista);
+  scanf("%d", &Voo -> identificadorPista);
 }

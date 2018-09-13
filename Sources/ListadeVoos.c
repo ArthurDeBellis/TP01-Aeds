@@ -31,6 +31,7 @@ void Inserir(Lista *list){
   novacelula->prox = celulalista->prox;
   celulalista->prox = novacelula;
 }
+//Aqui busco o voo pelo identificador e a função retorna o ponteiro da célula que contém tal voo
 Celula *ProcuraVoo(Lista *list, int Id){
     Ponteiro *temp=NULL, *celulaatual=NULL;
     celulaatual=list->primeiro->prox;
@@ -46,6 +47,7 @@ Celula *ProcuraVoo(Lista *list, int Id){
     }
   return celulaatual;
 }
+//Aqui fazemos o uso da função ProcuraVoo para encontrar o voo a ser removido e também buscamos o seu antecessor(que contém seu endereço), para pegar o endereço guardado na célula a ser removida no seu antecessor e depois liberar a memória ocupada pela célula removida.
 int RemoverVoo(Lista *list, int Id){
   Ponteiro *CelulaaRemover= NULL, *antecessor = NULL, *auxiliar = NULL;
   CelulaaRemover = *ProcuraVoo(*list, Id);

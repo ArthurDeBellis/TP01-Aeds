@@ -1,7 +1,7 @@
 //Aqui eu criei a estrutura de como será cada Celula da lista, com a estrutura do vôo mais o endereço do próximo item.
-typedef struct {
+typedef struct tcelula{
   TVoo voo;
-  Ponteiro prox;
+  struct *tcelula prox;
 } Celula;
 
 //Aqui criei um ponteiro para o tipo ItemLista.

@@ -1,25 +1,29 @@
-//Aqui eu criei a estrutura de como será cada Celula da lista, com a estrutura do vôo mais o endereço do próximo item.
-typedef struct {
-  TVoo voo;
-  Ponteiro prox;
-} Celula;
+#include "../Libs/voo.h"
+#ifndef LISTADEVOOS_H
+#define LISTADEVOOS_H
 
-//Aqui criei um ponteiro para o tipo ItemLista.
-typedef struct Celula *Ponteiro;
+//Aqui eu criei a estrutura de como será cada Celula da lista, com a estrutura do vôo mais o endereço do próximo item.
+typedef struct Celula{
+  TVoo Voo;
+  struct Celula* pProximo;
+}TCelula;
 
 //Aqui criei a lista, que irá conter apenas os endereços da primeira e última célula.
 typedef struct {
-  Ponteiro primeiro, ultimo;
-} Lista;
+  TCelula* pPrimeiro;
+  TCelula* pUltimo;
+}TLista;
 
 //Função inicializa, que irá dar a célula cabeça para a lista.
-void Inicializa(Lista *list);
+void Inicializa(TLista *pLista);
 
 //Função inserir
-void Inserir(Lista *list);
+void Inserir(TLista *pLista, TVoo *Voo);
 
 //Busca o vôo pelo identificador, remove da lista e retorna.
-int RemoverVoo(Lista *list, int Id);
+int RemoverVoo(TLista *pLista, int Id);
 
 //Busca o vôo pelo identificador e não o remove.
-Celula *ProcuraVoo (Lista *list, int Id);
+TCelula* ProcurarVoo (TLista *pLista, int Id);
+
+#endif

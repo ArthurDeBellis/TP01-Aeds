@@ -1,4 +1,7 @@
-typedef struct {
+#ifndef VOO_H
+#define VOO_H
+
+typedef struct{
   int vid;
   int horaDecolagem;
   int minutosDecolagem;
@@ -13,7 +16,7 @@ typedef struct {
 
 // Todos os valores serão iniciados com 0
 void Inicia(TVoo *Voo); /*Função para iniciar a execução*/
-
+//void ImprimirVoo(TVoo Voo);
 /*Funções para acessar e alterar as informações*/
 int GetVid(TVoo Voo);
 void SetVid(TVoo *Voo);
@@ -38,3 +41,4 @@ void SetAeroportoPouso(TVoo *Voo);
 
 int GetIdPista(TVoo Voo);
 void SetIdPista(TVoo *Voo);
+#endif

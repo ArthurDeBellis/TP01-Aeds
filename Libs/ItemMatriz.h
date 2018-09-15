@@ -30,3 +30,5 @@ TLista GetLista(ItemMatriz Item);
 int GetNumVoo(ItemMatriz Item);
 int GetHrLast(ItemMatriz Item);
 int GetMntsLast(ItemMatriz Item);
+
+#endif

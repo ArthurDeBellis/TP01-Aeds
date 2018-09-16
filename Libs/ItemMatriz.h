@@ -21,8 +21,7 @@ void iniciar (ItemMatriz *Item);
 
 void SetLista(ItemMatriz *Item);
 void SetNumVoo(ItemMatriz *Item);
-void SetHrLast(ItemMatriz *Item);
-void SetMntsLast(ItemMatriz *Item);
+void SetHreMntsLast(ItemMatriz *Item);
 
 /*Funções GET*/
 

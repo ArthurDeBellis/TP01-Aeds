@@ -27,6 +27,17 @@ void SetNumVoo(ItemMatriz *Item){
     }
     Item->NumeroVoos = tamanho;
 }
+//nessa função eu uso a estrutura tm para pegar a hora e minutos da última alteração na lista
+void SetHreMntsLast(ItemMatriz *Item){
+    struct tm *horarioatual;
+    time_t momentoatual;
+    momentoatual= time(NULL);
+    horarioatual=localtime(&momentoatual);
+
+    Item->HrLast = horarioatual->tm_hour;
+    Item->MntsLast = horarioatual->tm_min;
+
+}
 
 //Funções get
 TLista GetLista(ItemMatriz Item){

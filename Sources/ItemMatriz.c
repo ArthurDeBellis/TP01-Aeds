@@ -44,7 +44,7 @@ TLista GetLista(ItemMatriz Item){
     return Item.Lista;
 }
 int GetNumVoo(ItemMatriz Item){
-    return Item.NumeroVint GetHrLast(ItemMatriz Item);oos;
+    return Item.NumeroVoos;
 }
 int GetHrLast(ItemMatriz Item){
     return Item.HrLast;

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
+#include <string.h>
 #include "../Libs/voo.h"
 #include "../Libs/ListadeVoos.h"
 
@@ -21,6 +21,17 @@ void Inserir(TLista *pLista, TVoo *Voo){
   if(!novacelula){
     printf("Erro ao alocar memória");
   }
+
+  //Aqui eu pego o conteúdo do voo inserido e passo para a memoria alocada
+  novacelula->Voo.vid = Voo->vid;
+  novacelula->Voo.horaDecolagem = Voo->horaDecolagem;
+  novacelula->Voo.minutosDecolagem = Voo->minutosDecolagem;
+  novacelula->Voo.horaPouso = Voo->horaPouso;
+  novacelula->Voo.minutosPouso = Voo->minutosPouso;
+  strcpy(novacelula->Voo.aeroportoDecolagem,Voo->aeroportoDecolagem);
+  strcpy(novacelula->Voo.aeroportoPouso,Voo->aeroportoPouso);
+  novacelula->Voo.identificadorPista = Voo->identificadorPista;
+
   horario = (novacelula -> Voo.minutosDecolagem + (novacelula -> Voo.horaDecolagem * 60));
   //No loop while eu percorro pela lista parando apenas quando encontro horario igual ou
   //"mais tardio" que o horaio do voo que vai ser inserido, por isso com o ponteiro ultimomenor

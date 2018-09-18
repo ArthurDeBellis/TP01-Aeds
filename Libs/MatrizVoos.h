@@ -13,12 +13,13 @@
   TVoo Voo;
 }TMatriz;
 */
+
 typedef struct
 {
   ItemMatriz Matriz[24][24];
   int TotalDeVoos;
   int Data;
-  int HoradaUltimaAtualizaao;
+  int HoradaUltimaAtualizacao;
 }TipoMatriz;
 
 

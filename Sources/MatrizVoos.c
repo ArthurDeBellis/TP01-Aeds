@@ -26,21 +26,28 @@ void InserirVoo(TipoMatriz *Matriz, TVoo *voo){
   i = voo->horaDecolagem;
   j = voo->horaPouso + 1;
   Inserir(&Matriz->Matriz[i][j].Lista, voo);
+  SetHreMntsLast(&Matriz->Matriz[i][j]);
 }
-void RemoverVoo(TipoMatriz *Matriz, int vid){
+void RemoverMVoo(TipoMatriz *Matriz, int vid){
   int i,j;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
       while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
         if(Matriz->Matriz[i][j].Lista.pPrimeiro->Voo.vid == vid){
           RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
+          SetHreMntsLast(&Matriz->Matriz[i][j]);
         }
       }
     }
   }
 }
 void ProcurarVoo(TipoMatriz *Matriz, int vid){
-
+  int i, j;
+  for (i = 0; i < 24; i++){
+    for(j = 0; j < 24; j++){
+      ProcurarVoo(&Matriz->Matriz[i][j].Lista, vid);
+    }
+  }
 }
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso){
 

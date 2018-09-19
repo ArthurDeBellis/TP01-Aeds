@@ -16,6 +16,9 @@ void iniciar (ItemMatriz *Item){
 //Funções set
 //Em SetNumVoo percorrerei a lista com loop while, assim ao final obtenho o tamanho da lista
 //linear
+void SetLista(ItemMatriz *Item){
+    Inicializa(Item->Lista);
+}
 void SetNumVoo(ItemMatriz *Item){
     TCelula *Contador = NULL, *Auxiliar = NULL;
     int tamanho = 0;

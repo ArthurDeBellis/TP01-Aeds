@@ -8,6 +8,8 @@
 #include "../Libs/voo.h"
 
 int main(){
+    TipoMatriz Principal;
+    TVoo Reserva;
     int modo,parada = 0, intOperador;
     char op;
     while(parada ==0){
@@ -24,7 +26,7 @@ int main(){
     if(modo ==1){
         do{
             printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            printf("Selecione a operação que deseja fazer(digite em minúsculo):\n");
+            printf("Selecione a operação que deseja fazer:\n");
             printf("a = Inicializar\n");
             printf("b = Inserir voo\n");
             printf("c = Remover voo\n");
@@ -34,7 +36,7 @@ int main(){
             printf("g = Imprimir voos - entre apenas com o horário de pouso\n");
             printf("h = Imprimir todos os voos da matriz\n");
             printf("i = Encontrar faixa de horário mais movimentada\n");
-            printf("j = Encontrar faixa de horário menos movimentada\n");
+            printf("j = Encontrar faixa void Inicializar(TipoMatriz *Matriz)de horário menos movimentada\n");
             printf("k = Encontrar a lista com atualização mais recente\n");
             printf("l = Encontrar a lista com atualização mais antiga\n");
             printf("m = Verificar se a matriz é esparça\n");
@@ -45,10 +47,21 @@ int main(){
             intOperador = op - 64;
             switch (intOperador) {
                 case 1:
-
+                    IniciaMatriz(&Principal);
                     break;
                 case 2:
-
+                    IniciaVoo(&Reserva);
+                    printf("Horário de Decolagem:\n");
+                    scanf("%d:%d", &Reserva.horaDecolagem, &Reserva.minutosDecolagem);
+                    printf("Horário de Pouso:\n");
+                    scanf("%d:%d", &Reserva.horaPouso, &Reserva.minutosPouso);
+                    printf("Aeroporto de decolagem:\n");
+                    scanf("%s", Reserva.aeroportoDecolagem);
+                    printf("Aeroporto de pouso:\n");
+                    scanf("%s", Reserva.aeroportoPouso);
+                    printf("Identificador de pista:\n");
+                    scanf("%d", &Reserva.identificadorPista);
+                    InserirVoo(&Principal, &Reserva);
                     break;
                 case 3:
 
@@ -84,12 +97,8 @@ int main(){
 
                     break;
 
-
-
-
-
             }
-        }while(op != 's');
+        }while(intOperador != 19);
     }
 
 

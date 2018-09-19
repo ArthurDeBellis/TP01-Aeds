@@ -18,8 +18,8 @@ typedef struct
 {
   ItemMatriz Matriz[24][24];
   int TotalDeVoos;
-  int Data;
-  int HoradaUltimaAtualizacao;
+  int dia, mes, ano;
+  int HoradaUltimaAtualizacao, MinutosUltimaAtualizacao;
 }TipoMatriz;
 
 
@@ -27,7 +27,7 @@ typedef struct
 
 void Inicializar(TipoMatriz *Matriz); //Inicializa a estrutura de dados do TAD
 
-void InserirVoo(TipoMatriz *Matriz, int vid, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso, char* aeroportoDecolagem, char* aeroportoPouso, int identificadorPista); //Insere informações de um voo na matriz
+void InserirVoo(TipoMatriz *Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso, char* aeroportoDecolagem, char* aeroportoPouso, int identificadorPista); //Insere informações de um voo na matriz
 void RemoverVoo(TipoMatriz *Matriz, int vid); //Remove um voo a partir do indentificador de voo
 void ProcurarVoo(TipoMatriz *Matriz, int vid); //Procura um voo a partir do identificador de voo
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso); // Imprimir voos a partir do horario de decolagem e horario de pouso previsto

@@ -25,14 +25,14 @@ void InserirVoo(TipoMatriz *Matriz, TVoo *voo){
   int i, j;
   i = voo->horaDecolagem;
   j = voo->horaPouso + 1;
-  Inserir(&Matriz->Matriz[i][j]->Lista, &voo)
+  Inserir(&Matriz->Matriz[i][j].Lista, voo);
 }
 void RemoverVoo(TipoMatriz *Matriz, int vid){
   int i,j;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
-      while(Matriz->Matriz[i][j].Lista->pPrimeiro->pProximo != NULL){
-        if(Matriz->Matriz[i][j].Lista->pPrimeiro.Voo.vid == vid){
+      while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
+        if(Matriz->Matriz[i][j].Lista.pPrimeiro->Voo.vid == vid){
           RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
         }
       }
@@ -60,7 +60,7 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
     for(linha=0; linha<24; linha++){
       contador = 0;
       for(coluna =0; coluna<24; coluna++){
-          pAtual = Matriz->Matriz[linha][coluna]->Lista->pPrimeiro;
+          pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
           while (pAtual->pProximo != NULL){
               contador++;
               pAuxiliar = pAtual->pProximo;
@@ -79,12 +79,12 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
 
 }
 void EncontrarMenorHorario(TipoMatriz *Matriz){
-    int linha, coluna,i,j,comparador =0,contador, menor =10000;
+    int linha, coluna,i,j,comparador =0,contador, menor =10000, maior;
     Celula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
         contador = 0;
         for(coluna =0; coluna<24; coluna++){
-            pAtual = Matriz->Matriz[linha][coluna]->Lista->pPrimeiro;
+            pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
             while (pAtual->pProximo != NULL){
                 contador++;
                 pAuxiliar = pAtual->pProximo;
@@ -106,7 +106,7 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
     ItemMatriz *pAtual;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
-            pAtual = Matriz->Matriz[linha][coluna];
+            pAtual = &(Matriz->Matriz[linha][coluna]);
             horas = (pAtual->HrLast)*60;
             minutos = (pAtual->MntsLast);
             if (contador ==0){
@@ -116,7 +116,7 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
                 i = 0;
                 j = 0;
             }else{
-                if ((horas+minutos)>=(horaMaisRecente+minutoMaisRecente){
+                if ((horas+minutos)>=(horaMaisRecente+minutoMaisRecente)){
                     horaMaisRecente = horas/60;
                     minutoMaisRecente = minutos;
                     i = linha;
@@ -126,12 +126,13 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
     }
     printf("i = %d, j = %d, horario = %d:%d\n", i,j,horaMaisRecente,minutoMaisRecente);
 }
+}
 void EncontrarListaMenosRecente(TipoMatriz *Matriz){
     int horas, minutos, minutoMenosRecente, horaMenosRecente, contador = 0, linha, coluna, i, j;
     ItemMatriz *pAtual;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
-            pAtual = Matriz->Matriz[linha][coluna];
+            pAtual = &(Matriz->Matriz[linha][coluna]);
             horas = (pAtual->HrLast)*60;
             minutos = (pAtual->MntsLast);
             if (contador ==0){
@@ -141,7 +142,7 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
                 i = 0;
                 j = 0;
             }else{
-                if ((horas+minutos)<=(horaMenosRecente+minutoMenosRecente){
+                if ((horas+minutos)<=(horaMenosRecente+minutoMenosRecente)){
                     horaMenosRecente = horas/60;
                     minutoMenosRecente = minutos;
                     i = linha;
@@ -150,13 +151,14 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
             }
         }
     printf("i = %d, j = %d, horario = %d:%d\n", i,j,horaMenosRecente,minutoMenosRecente);
+  }
 }
 void MatrizEspaca(TipoMatriz *Matriz){
-    int contador =0;
+    int contador =0, linha, coluna;
     Celula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
-            pAtual = Matriz->Matriz[linha][coluna]->Lista->pPrimeiro;
+            pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
             if(pAtual->pProximo == NULL){
                 contador++;
             }

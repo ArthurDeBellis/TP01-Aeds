@@ -5,7 +5,7 @@
 #include "../Libs/ListadeVoos.h"
 #include "../Libs/ItemMatriz.h"
 
-void iniciar (ItemMatriz *Item){
+void IniciaItem (ItemMatriz *Item){
     Item->Lista.pPrimeiro = NULL;
     Item->Lista.pUltimo = NULL;
     Item->NumeroVoos = 0;
@@ -17,7 +17,7 @@ void iniciar (ItemMatriz *Item){
 //Em SetNumVoo percorrerei a lista com loop while, assim ao final obtenho o tamanho da lista
 //linear
 void SetLista(ItemMatriz *Item){
-    Inicializa(Item->Lista);
+    IniciaLista(&Item->Lista);
 }
 void SetNumVoo(ItemMatriz *Item){
     TCelula *Contador = NULL, *Auxiliar = NULL;

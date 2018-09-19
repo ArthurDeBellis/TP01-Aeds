@@ -15,7 +15,7 @@ typedef struct {
 }TLista;
 
 //Função inicializa, que irá dar a célula cabeça para a lista.
-void Inicializa(TLista *pLista);
+void IniciaLista(TLista *pLista);
 
 //Função inserir
 void Inserir(TLista *pLista, TVoo *Voo);

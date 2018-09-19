@@ -15,7 +15,7 @@ typedef struct {
   int MntsLast;
 }ItemMatriz;
 
-void iniciar (ItemMatriz *Item);
+void IniciaItem (ItemMatriz *Item);
 
 /*Funções SET*/
 

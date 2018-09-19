@@ -25,7 +25,7 @@ typedef struct
 
 //Criando as funções
 
-void Inicializar(TipoMatriz *Matriz); //Inicializa a estrutura de dados do TAD
+void IniciaMatriz(TipoMatriz *Matriz); //Inicializa a estrutura de dados do TAD
 
 void InserirVoo(TipoMatriz *Matriz, TVoo *voo); //Insere informações de um voo na matriz
 void RemoverMVoo(TipoMatriz *Matriz, int vid); //Remove um voo a partir do indentificador de voo

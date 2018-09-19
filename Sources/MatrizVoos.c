@@ -6,12 +6,12 @@
 #include "../Libs/ListadeVoos.h"
 #include "../Libs/voo.h"
 
-void Inicializar(TipoMatriz *Matriz){
+void IniciaMatriz(TipoMatriz *Matriz){
   int i, j;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
-      iniciar(&Matriz -> Matriz[i][j]);
-      Inicializa(&Matriz -> Matriz[i][j].Lista);
+      IniciaItem(&Matriz -> Matriz[i][j]);
+      IniciaLista(&Matriz -> Matriz[i][j].Lista);
     }
   }
   Matriz -> dia = 0;

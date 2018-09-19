@@ -15,7 +15,7 @@ typedef struct{
 /*As horas e minutos foram separadas as para facilitar a execução do programa*/
 
 // Todos os valores serão iniciados com 0
-void Inicia(TVoo *Voo);
+void IniciaVoo(TVoo *Voo);
 
 /*--------------------------------------------------------------------------------------*/
                                     //Funções Get

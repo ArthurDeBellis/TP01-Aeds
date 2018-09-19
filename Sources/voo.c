@@ -5,7 +5,7 @@
 #include "../Libs/voo.h"
 
 //Função inicia
-void Inicia(TVoo *Voo)
+void IniciaVoo(TVoo *Voo)
 {
   Voo -> vid = 0;
   Voo -> horaDecolagem = 0;

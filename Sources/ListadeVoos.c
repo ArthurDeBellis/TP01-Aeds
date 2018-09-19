@@ -6,7 +6,7 @@
 
 
 //Função inicializa dando à lista uma célula cabeça
-void Inicializa(TLista *pLista){
+void IniciaLista(TLista *pLista){
   pLista -> pPrimeiro = (TCelula*) malloc(sizeof(TCelula));
   pLista -> pUltimo = pLista -> pPrimeiro;
   pLista -> pUltimo -> pProximo = NULL;

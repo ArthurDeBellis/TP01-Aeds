@@ -24,6 +24,6 @@ void Inserir(TLista *pLista, TVoo *Voo);
 int RemoverVoo(TLista *pLista, int Id);
 
 //Busca o vôo pelo identificador e não o remove.
-TCelula* ProcurarVoo (TLista *pLista, int Id);
+TCelula ProcurarVoo (TLista *pLista, int Id);
 
 #endif

@@ -58,7 +58,6 @@ TCelula *ProcuraVoo(TLista *pLista, int Id){
     celulaatual = pLista -> pPrimeiro -> pProximo;
     while(celulaatual -> Voo.vid != Id){
       if (celulaatual -> pProximo == NULL){
-        printf("Voo não encontrado.\n");
         break;
       }
       else{

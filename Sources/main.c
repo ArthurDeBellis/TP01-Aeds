@@ -9,8 +9,8 @@
 
 int main(){
     TipoMatriz Principal;
-    TVoo Reserva;
-    int modo,parada = 0, intOperador;
+    TVoo vooReserva;
+    int modo,parada = 0, intOperador, vid, hrPouso, minPouso, hrDecolagem, minDecolagem;
     char op;
     while(parada ==0){
         printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -50,53 +50,68 @@ int main(){
                     IniciaMatriz(&Principal);
                     break;
                 case 2:
-                    IniciaVoo(&Reserva);
+                    IniciaVoo(&vooReserva);
+                    SetVid(&vooReserva);
                     printf("Horário de Decolagem:\n");
-                    scanf("%d:%d", &Reserva.horaDecolagem, &Reserva.minutosDecolagem);
+                    scanf("%d:%d", &vooReserva.horaDecolagem, &vooReserva.minutosDecolagem);
                     printf("Horário de Pouso:\n");
-                    scanf("%d:%d", &Reserva.horaPouso, &Reserva.minutosPouso);
+                    scanf("%d:%d", &vooReserva.horaPouso, &vooReserva.minutosPouso);
                     printf("Aeroporto de decolagem:\n");
-                    scanf("%s", Reserva.aeroportoDecolagem);
+                    scanf("%s", vooReserva.aeroportoDecolagem);
                     printf("Aeroporto de pouso:\n");
-                    scanf("%s", Reserva.aeroportoPouso);
+                    scanf("%s", vooReserva.aeroportoPouso);
                     printf("Identificador de pista:\n");
-                    scanf("%d", &Reserva.identificadorPista);
-                    InserirVoo(&Principal, &Reserva);
+                    scanf("%d", &vooReserva.identificadorPista);
+                    InserirMVoo(&Principal, &vooReserva);
+                    printf("Voo cadastrado com o VID %d\n", vooReserva.vid);
                     break;
                 case 3:
-
+                    printf("Digite o Vid do voo a ser removido: \n");
+                    scanf("%d", &vid);
+                    RemoverMVoo(&Principal, vid);
                     break;
                 case 4:
-
+                    printf("Digite o Vid do voo a ser pesquisado: \n");
+                    scanf("%d", &vid);
+                    ProcurarMVoo(&Principal, vid);
                     break;
                 case 5:
-
+                    printf("Digite a hora de decolagem: \n");
+                    scanf("%d:%d",&hrDecolagem, &minDecolagem);
+                    printf("Digite a hora de pouso: \n");
+                    scanf("%d:%d",&hrPouso, &minPouso);
+                    ImprimirVoo1(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
                     break;
                 case 6:
-
+                    printf("Entre com o horário de decolagem: \n");
+                    scanf("%d:%d", &hrDecolagem, &minDecolagem);
+                    ImprimirVoo2(Principal, hrDecolagem, minDecolagem);
                     break;
                 case 7:
-
+                    printf("Entre com o horário de decolagem: \n");
+                    scanf("%d:%d", &hrDecolagem, &minDecolagem);
+                    ImprimirVoo2(Principal, hrDecolagem, minDecolagem);
                     break;
                 case 8:
-
+                    ImprimirMatriz(Principal);
                     break;
                 case 9:
-
+                    EncontrarMaiorHorario(&Principal);
                     break;
                 case 10:
-
+                    EncontrarMenorHorario(&Principal);
                     break;
                 case 11:
-
+                    EncontrarListaMaisRecente(&Principal);
                     break;
                 case 12:
-
+                    EncontrarListaMenosRecente(&Principal);
                     break;
                 case 13:
-
+                    MatrizEspaca(&Principal);
                     break;
-
+                default:
+                    printf("Opção inválida\n");
             }
         }while(intOperador != 19);
     }

@@ -21,7 +21,7 @@ void IniciaMatriz(TipoMatriz *Matriz){
   Matriz -> HoradaUltimaAtualizacao = 0;
   Matriz -> MinutosUltimaAtualizacao = 0;
 }
-void InserirVoo(TipoMatriz *Matriz, TVoo *voo){
+void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   int i, j;
   i = voo->horaDecolagem;
   j = voo->horaPouso + 1;
@@ -29,23 +29,28 @@ void InserirVoo(TipoMatriz *Matriz, TVoo *voo){
   SetHreMntsLast(&Matriz->Matriz[i][j]);
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){
-  int i,j;
+  int i,j,contador=0;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
       while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
         if(Matriz->Matriz[i][j].Lista.pPrimeiro->Voo.vid == vid){
           RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
           SetHreMntsLast(&Matriz->Matriz[i][j]);
+          contador++;
         }
       }
     }
   }
+  if(contador ==0){
+    printf("Voo nao encontrado.\n");
+  }
 }
-void ProcurarVoo(TipoMatriz *Matriz, int vid){
+void ProcurarMVoo(TipoMatriz *Matriz, int vid){
   int i, j;
+  TCelula *Encontrado;
   for (i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
-      ProcurarVoo(&Matriz->Matriz[i][j].Lista, vid);
+      Encontrado = ProcurarVoo(&Matriz->Matriz[i][j].Lista, vid);
     }
   }
 }
@@ -151,7 +156,7 @@ void ImprimirMatriz(TipoMatriz Matriz){
   }
 }
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
-    int linha, coluna,i,j,comparador =0,contador, maior =0;
+    int linha, coluna,i,j,contador, maior =0;
     TCelula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
       contador = 0;
@@ -175,7 +180,7 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
 
 }
 void EncontrarMenorHorario(TipoMatriz *Matriz){
-    int linha, coluna,i,j,comparador =0,contador, menor =10000, maior;
+    int linha, coluna,i,j,contador, menor =10000, maior;
     TCelula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
         contador = 0;

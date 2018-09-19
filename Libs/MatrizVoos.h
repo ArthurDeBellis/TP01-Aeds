@@ -38,21 +38,21 @@ void ImprimirMatriz(TipoMatriz Matriz); // Imprimir todos os voos cadastrados na
 /*Encontrar faixa de horário de decolagem e previsão de pouso com maior número de voos cadastrados.
 Mostra indices i e j da posição encontrada e quantidade de voos.*/
 
-void EncontrarMaiorHorario(TipoMatriz Matriz);
+void EncontrarMaiorHorario(TipoMatriz *Matriz);
 
 /*Encontrar faixa de horário de decolagem e previsão de pouso com menor número de voos cadastrados.
 Mostra indices i e j da posição encontrada e quantidade de voos.*/
 
-void EncontrarMenorHorario(TipoMatriz Matriz);
+void EncontrarMenorHorario(TipoMatriz *Matriz);
 
 //Encontrar lista de voos mais recentemente alterada. Mostra indices i e j da posição encontrada e horário da última alteração.
 
-void EncontrarListaMaisRecente(TipoMatriz Matriz);
+void EncontrarListaMaisRecente(TipoMatriz *Matriz);
 
 //Encontrar lista de voos menos recentemente alterada. Mostra indices i e j da posição encontrada e horário da última alteração.
 
-void EncontrarListaMenosRecente(TipoMatriz Matriz);
+void EncontrarListaMenosRecente(TipoMatriz *Matriz);
 
-void MatrizEspaca(TipoMatriz Matriz); //Verificar se matriz é esparça
+void MatrizEspaca(TipoMatriz *Matriz); //Verificar se matriz é esparça
 
 #endif

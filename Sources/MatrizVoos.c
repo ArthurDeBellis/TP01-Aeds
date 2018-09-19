@@ -54,18 +54,117 @@ void ImprimirVoo3(TipoMatriz Matriz, int horaPouso, int minutosPouso){
 void ImprimirMatriz(TipoMatriz Matriz){
 
 }
-void EncontrarMaiorHorario(TipoMatriz Matriz){
+void EncontrarMaiorHorario(TipoMatriz *Matriz){
+    int linha, coluna,i,j,comparador =0,contador, maior =0;
+    Celula *pAtual, *pAuxiliar;
+    for(linha=0; linha<24; linha++){
+      contador = 0;
+      for(coluna =0; coluna<24; coluna++){
+          pAtual = Matriz->Matriz[linha][coluna]->Lista->pPrimeiro;
+          while (pAtual->pProximo != NULL){
+              contador++;
+              pAuxiliar = pAtual->pProximo;
+              pAtual = pAuxiliar;
+          }
+          if (contador>=maior){
+              i = linha;
+              j = coluna;
+              maior = contador;
+          }
+    printf("i = %d e j = %d e quantidade de voos = %d\n", i, j, contador);
+
+      }
+    }
+
 
 }
-void EncontrarMenorHorario(TipoMatriz Matriz){
+void EncontrarMenorHorario(TipoMatriz *Matriz){
+    int linha, coluna,i,j,comparador =0,contador, menor =10000;
+    Celula *pAtual, *pAuxiliar;
+    for(linha=0; linha<24; linha++){
+        contador = 0;
+        for(coluna =0; coluna<24; coluna++){
+            pAtual = Matriz->Matriz[linha][coluna]->Lista->pPrimeiro;
+            while (pAtual->pProximo != NULL){
+                contador++;
+                pAuxiliar = pAtual->pProximo;
+                pAtual = pAuxiliar;
+            }
+            if (contador<=maior){
+                i = linha;
+                j = coluna;
+                menor = contador;
+            }
+    printf("i = %d e j = %d e quantidade de voos = %d\n", i, j, contador);
+
+      }
+    }
 
 }
-void EncontrarListaMaisRecente(TipoMatriz Matriz){
-
+void EncontrarListaMaisRecente(TipoMatriz *Matriz){
+    int horas, minutos, minutoMaisRecente, horaMaisRecente, contador = 0, linha, coluna, i, j;
+    ItemMatriz *pAtual;
+    for(linha=0; linha<24; linha++){
+        for(coluna =0; coluna<24; coluna++){
+            pAtual = Matriz->Matriz[linha][coluna];
+            horas = (pAtual->HrLast)*60;
+            minutos = (pAtual->MntsLast);
+            if (contador ==0){
+                contador++;
+                horaMaisRecente = horas;
+                minutoMaisRecente = minutos;
+                i = 0;
+                j = 0;
+            }else{
+                if ((horas+minutos)>=(horaMaisRecente+minutoMaisRecente){
+                    horaMaisRecente = horas/60;
+                    minutoMaisRecente = minutos;
+                    i = linha;
+                    j = coluna;
+            }
+        }
+    }
+    printf("i = %d, j = %d, horario = %d:%d\n", i,j,horaMaisRecente,minutoMaisRecente);
 }
-void EncontrarListaMenosRecente(TipoMatriz Matriz){
-
+void EncontrarListaMenosRecente(TipoMatriz *Matriz){
+    int horas, minutos, minutoMenosRecente, horaMenosRecente, contador = 0, linha, coluna, i, j;
+    ItemMatriz *pAtual;
+    for(linha=0; linha<24; linha++){
+        for(coluna =0; coluna<24; coluna++){
+            pAtual = Matriz->Matriz[linha][coluna];
+            horas = (pAtual->HrLast)*60;
+            minutos = (pAtual->MntsLast);
+            if (contador ==0){
+                contador++;
+                horaMenosRecente = horas;
+                minutoMenosRecente = minutos;
+                i = 0;
+                j = 0;
+            }else{
+                if ((horas+minutos)<=(horaMenosRecente+minutoMenosRecente){
+                    horaMenosRecente = horas/60;
+                    minutoMenosRecente = minutos;
+                    i = linha;
+                    j = coluna;
+                }
+            }
+        }
+    printf("i = %d, j = %d, horario = %d:%d\n", i,j,horaMenosRecente,minutoMenosRecente);
 }
-void MatrizEspaca(TipoMatriz Matriz){
-
+void MatrizEspaca(TipoMatriz *Matriz){
+    int contador =0;
+    Celula *pAtual, *pAuxiliar;
+    for(linha=0; linha<24; linha++){
+        for(coluna =0; coluna<24; coluna++){
+            pAtual = Matriz->Matriz[linha][coluna]->Lista->pPrimeiro;
+            if(pAtual->pProximo == NULL){
+                contador++;
+            }
+        }
+    }
+    if(contador>=384){
+      printf("É esparça.\n");
+    }else{
+      printf("Não é esparça.\n");
+    }
 }

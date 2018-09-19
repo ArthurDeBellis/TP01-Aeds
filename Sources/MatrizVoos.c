@@ -50,16 +50,105 @@ void ProcurarVoo(TipoMatriz *Matriz, int vid){
   }
 }
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso){
+  int i, j;
+  i = horaDecolagem;
+  j = horaPouso + 1;
+  TCelula *pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo, *pAuxiliar;
+  if(Matriz.Matriz[i][j].NumeroVoos != 0){
+    while (pAtual != NULL){
+      printf("=======================================================\n");
+      printf("Vid: %d\n", pAtual->Voo.vid);
+      printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
+      printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
+      printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
+      printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
+      printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
+      printf("=======================================================\n");
 
+      pAuxiliar = pAtual -> pProximo;
+      pAtual = pAuxiliar;
+    }
+  }
+  else{
+    printf("==========================================================\n");
+    printf("\n    >>>Nao existe voos cadastrados nesse horario <<<\n");
+    printf("==========================================================\n");
+  }
 }
 void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
+  int i, j;
+  i = horaDecolagem;
+  TCelula *pAtual, *pAuxiliar;
+  for(j = 0; j < 24; j++)
+  {
+    if(Matriz.Matriz[i][j].NumeroVoos != 0){
+      pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
+      while (pAtual != NULL){
+        printf("=======================================================\n");
+        printf("Vid: %d\n", pAtual->Voo.vid);
+        printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
+        printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
+        printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
+        printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
+        printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
+        printf("=======================================================\n");
 
+        pAuxiliar = pAtual->pProximo;
+        pAtual = pAuxiliar;
+
+      }
+    }
+  }
 }
 void ImprimirVoo3(TipoMatriz Matriz, int horaPouso, int minutosPouso){
+  int i, j;
+  j = horaPouso + 1;
+  TCelula *pAtual, *pAuxiliar;
+  for(i = 0; i < 24; i++)
+  {
+    if(Matriz.Matriz[i][j].NumeroVoos != 0){
+      pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
+      while (pAtual != NULL){
+        printf("=======================================================\n");
+        printf("Vid: %d\n", pAtual->Voo.vid);
+        printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
+        printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
+        printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
+        printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
+        printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
+        printf("=======================================================\n");
 
+        pAuxiliar = pAtual->pProximo;
+        pAtual = pAuxiliar;
+      }
+    }
+  }
 }
 void ImprimirMatriz(TipoMatriz Matriz){
+  int i, j;
+  TCelula *pAtual, *pAuxiliar;
+  for(i = 0; i < 24; i ++)
+  {
+    for (j = 0; j < 24; j++)
+    {
+      if(Matriz.Matriz[i][j].NumeroVoos != 0){
+        pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
+        while (pAtual != NULL){
+          printf("=======================================================\n");
+          printf("Vid: %d\n", pAtual->Voo.vid);
+          printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
+          printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
+          printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
+          printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
+          printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
+          printf("=======================================================\n");
 
+          pAuxiliar = pAtual->pProximo;
+          pAtual = pAuxiliar;
+        }
+      }
+    }
+  }
 }
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
     int linha, coluna,i,j,comparador =0,contador, maior =0;

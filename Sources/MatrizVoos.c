@@ -152,7 +152,7 @@ void ImprimirMatriz(TipoMatriz Matriz){
 }
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
     int linha, coluna,i,j,comparador =0,contador, maior =0;
-    Celula *pAtual, *pAuxiliar;
+    TCelula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
       contador = 0;
       for(coluna =0; coluna<24; coluna++){
@@ -176,7 +176,7 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
 }
 void EncontrarMenorHorario(TipoMatriz *Matriz){
     int linha, coluna,i,j,comparador =0,contador, menor =10000, maior;
-    Celula *pAtual, *pAuxiliar;
+    TCelula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
         contador = 0;
         for(coluna =0; coluna<24; coluna++){
@@ -251,7 +251,7 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
 }
 void MatrizEspaca(TipoMatriz *Matriz){
     int contador =0, linha, coluna;
-    Celula *pAtual, *pAuxiliar;
+    TCelula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
             pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;

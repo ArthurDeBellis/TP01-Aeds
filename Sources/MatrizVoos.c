@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "../Libs/MatrizVoos.h"
 #include "../Libs/ItemMatriz.h"
 #include "../Libs/ListadeVoos.h"
@@ -13,14 +14,30 @@ void Inicializar(TipoMatriz *Matriz){
       Inicializa(&Matriz -> Matriz[i][j].Lista);
     }
   }
-  /*Matriz -> Data = 0;
-  Matriz -> HoradaUltimaAtualizacao = 0;*/
-}
-void InserirVoo(TipoMatriz *Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso, char* aeroportoDecolagem, char* aeroportoPouso, int identificadorPista){
+  Matriz -> dia = 0;
+  Matriz -> mes = 0;
+  Matriz -> ano = 0;
 
+  Matriz -> HoradaUltimaAtualizacao = 0;
+  Matriz -> MinutosUltimaAtualizacao = 0;
+}
+void InserirVoo(TipoMatriz *Matriz, TVoo *voo){
+  int i, j;
+  i = voo->horaDecolagem;
+  j = voo->horaPouso + 1;
+  Inserir(&Matriz->Matriz[i][j]->Lista, &voo)
 }
 void RemoverVoo(TipoMatriz *Matriz, int vid){
-
+  int i,j;
+  for(i = 0; i < 24; i++){
+    for(j = 0; j < 24; j++){
+      while(Matriz->Matriz[i][j].Lista->pPrimeiro->pProximo != NULL){
+        if(Matriz->Matriz[i][j].Lista->pPrimeiro.Voo.vid == vid){
+          RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
+        }
+      }
+    }
+  }
 }
 void ProcurarVoo(TipoMatriz *Matriz, int vid){
 

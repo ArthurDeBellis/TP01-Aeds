@@ -16,6 +16,7 @@ typedef struct{
 
 // Todos os valores serão iniciados com 0
 void IniciaVoo(TVoo *Voo);
+void ImprimirTVoo(TVoo Voo);
 
 /*--------------------------------------------------------------------------------------*/
                                     //Funções Get

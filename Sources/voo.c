@@ -18,7 +18,7 @@ void IniciaVoo(TVoo *Voo)
 
 }
 //Função Imprimir
-/*void ImprimirVoo(TVoo Voo)
+void ImprimirTVoo(TVoo Voo)
 {
   printf("Vid: %d\n", Voo.vid);
   printf("Horario de Decolagem: %d:%d\n", Voo.horaDecolagem,Voo.minutosDecolagem);
@@ -27,7 +27,7 @@ void IniciaVoo(TVoo *Voo)
   printf("Aeroporto de Pouso: %s\n", Voo.aeroportoPouso);
   printf("Identificador de Pista: %d\n", Voo.identificadorPista);
 
-}*/
+}
 
 /*--------------------------------------------------------------------------------------*/
                                     //Funções Get

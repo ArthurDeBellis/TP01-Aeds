@@ -53,6 +53,7 @@ void ProcurarMVoo(TipoMatriz *Matriz, int vid){
       Encontrado = ProcurarVoo(&Matriz->Matriz[i][j].Lista, vid);
     }
   }
+
 }
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso){
   int i, j;
@@ -180,7 +181,7 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
 
 }
 void EncontrarMenorHorario(TipoMatriz *Matriz){
-    int linha, coluna,i,j,contador, menor =10000, maior;
+    int linha, coluna,i,j,contador, menor =10000;
     TCelula *pAtual, *pAuxiliar;
     for(linha=0; linha<24; linha++){
         contador = 0;
@@ -191,7 +192,7 @@ void EncontrarMenorHorario(TipoMatriz *Matriz){
                 pAuxiliar = pAtual->pProximo;
                 pAtual = pAuxiliar;
             }
-            if (contador<=maior){
+            if (contador<=menor){
                 i = linha;
                 j = coluna;
                 menor = contador;
@@ -256,7 +257,7 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
 }
 void MatrizEspaca(TipoMatriz *Matriz){
     int contador =0, linha, coluna;
-    TCelula *pAtual, *pAuxiliar;
+    TCelula *pAtual;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
             pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;

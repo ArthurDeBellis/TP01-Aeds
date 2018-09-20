@@ -10,9 +10,8 @@
 int main(){
     TipoMatriz Principal;
     TVoo vooReserva;
-    int modo,parada = 0, intOperador, vid, hrPouso, minPouso, hrDecolagem, minDecolagem;
+    int modo,parada = 0, intOperador = 0, vid, hrPouso, minPouso, hrDecolagem, minDecolagem;
     char op;
-    while(parada ==0){
         printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         printf("Digite o modo desejado:\n");
         printf("1 = Interativo\n");
@@ -21,10 +20,9 @@ int main(){
         scanf("%d", &modo);
         if(modo == 1 || modo ==2){
             parada++;
-        }
     }
     if(modo ==1){
-        do{
+        while(intOperador != 19){
             printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
             printf("Selecione a operação que deseja fazer:\n");
             printf("a = Inicializar\n");
@@ -36,18 +34,19 @@ int main(){
             printf("g = Imprimir voos - entre apenas com o horário de pouso\n");
             printf("h = Imprimir todos os voos da matriz\n");
             printf("i = Encontrar faixa de horário mais movimentada\n");
-            printf("j = Encontrar faixa void Inicializar(TipoMatriz *Matriz)de horário menos movimentada\n");
+            printf("j = Encontrar faixa de horário menos movimentada\n");
             printf("k = Encontrar a lista com atualização mais recente\n");
             printf("l = Encontrar a lista com atualização mais antiga\n");
             printf("m = Verificar se a matriz é esparça\n");
             printf("s = Sair\n");
             printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-            scanf("%c", &op);
+            scanf(" %c", &op);
             op = toupper(op);
             intOperador = op - 64;
             switch (intOperador) {
                 case 1:
                     IniciaMatriz(&Principal);
+                    printf("Matriz Inicializada\n");
                     break;
                 case 2:
                     IniciaVoo(&vooReserva);
@@ -113,7 +112,7 @@ int main(){
                 default:
                     printf("Opção inválida\n");
             }
-        }while(intOperador != 19);
+        }
     }
 
 

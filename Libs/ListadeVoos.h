@@ -17,13 +17,22 @@ typedef struct {
 //Função inicializa, que irá dar a célula cabeça para a lista.
 void IniciaLista(TLista *pLista);
 
+//Função para ver se a lista é vazia
+int Vazia(TLista Lista);
+
 //Função inserir
 void Inserir(TLista *pLista, TVoo *Voo);
+
+//Função Inserir(em Andamento)
+void InserirNovo(TLista *Lista, TVoo Voo);
+
+//Função para inserir na ultima posição da lista
+void InserirUltimo(TLista *Lista, TVoo Voo);
 
 //Busca o vôo pelo identificador, remove da lista e retorna.
 int RemoverVoo(TLista *pLista, int Id);
 
 //Busca o vôo pelo identificador e não o remove.
-TCelula ProcurarVoo (TLista *pLista, int Id);
+TCelula *ProcurarVoo (TLista *pLista, int Id);
 
 #endif

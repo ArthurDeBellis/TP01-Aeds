@@ -13,6 +13,40 @@ void IniciaLista(TLista *pLista){
 }
 //Aqui alocamos um novo espaço para a célula a ser inserida e também buscamos o lugar que
 //ela ocupará na lista.
+
+void InserirUltimo(TLista *Lista, TVoo Voo)
+{
+
+  Lista -> pUltimo -> pProximo = (TCelula *) malloc(sizeof(TCelula));
+  Lista -> pUltimo = Lista -> pUltimo -> pProximo;
+  Lista -> pUltimo -> Voo = Voo;
+  Lista -> pUltimo -> pProximo = NULL;
+
+}
+
+int Vazia(TLista Lista)
+{
+  return (Lista.pPrimeiro == Lista.pUltimo);
+}
+
+
+void InserirNovo(TLista *Lista, TVoo Voo){
+
+  if(Vazia((*Lista))==1){
+    InserirUltimo(Lista, Voo);
+    return;
+  }
+
+  if(((Voo.horaDecolagem * 60 )+Voo.minutosDecolagem) >= ((Lista->pUltimo->Voo.horaDecolagem *60 )+ Lista->pUltimo->Voo.minutosDecolagem) ){
+      InserirUltimo(Lista, Voo);
+      return;
+  }
+  
+
+
+}
+
+
 void Inserir(TLista *pLista, TVoo *Voo){
   TCelula *novacelula = NULL, *auxiliar = NULL, *ultimomenor=NULL;
   TCelula *celulalista = (pLista -> pPrimeiro);
@@ -53,7 +87,7 @@ void Inserir(TLista *pLista, TVoo *Voo){
   }
 }
 //Aqui busco o voo pelo identificador e a função retorna o ponteiro da célula que contém tal voo
-TCelula *ProcuraVoo(TLista *pLista, int Id){
+TCelula *ProcurarVoo(TLista *pLista, int Id){
     TCelula *temp = NULL, *celulaatual = NULL;
     celulaatual = pLista -> pPrimeiro -> pProximo;
     while(celulaatual -> Voo.vid != Id){
@@ -72,7 +106,7 @@ TCelula *ProcuraVoo(TLista *pLista, int Id){
 //removida no seu antecessor e depois liberar a memória ocupada pela célula removida.
 int RemoverVoo(TLista *pLista, int Id){
   TCelula *CelulaaRemover= NULL, *antecessor = NULL, *auxiliar = NULL;
-  CelulaaRemover = ProcuraVoo(pLista, Id);
+  CelulaaRemover = ProcurarVoo(pLista, Id);
   antecessor = pLista -> pPrimeiro -> pProximo;
   while(antecessor -> pProximo != CelulaaRemover){
     auxiliar = antecessor -> pProximo;

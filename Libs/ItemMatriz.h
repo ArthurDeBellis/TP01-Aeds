@@ -16,7 +16,7 @@ typedef struct {
 }ItemMatriz;
 
 void IniciaItem (ItemMatriz *Item);
-
+void ImprimirItem(ItemMatriz Item);
 /*Funções SET*/
 
 void SetLista(ItemMatriz *Item);

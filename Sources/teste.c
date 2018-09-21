@@ -10,7 +10,7 @@
 
 int main() {
   srand(time(NULL));
-
+//  int videntrada=0, vid2 =0;
   TVoo voo;
 
   IniciaVoo(&voo);
@@ -73,20 +73,35 @@ int main() {
 
   //ImprimirTVoo(voo);
 
-  TLista lista1;
-  IniciaLista(&lista1);
+  //TLista lista1;
+  //IniciaLista(&lista1);
 
-  InserirNovo(&lista1, voo);
-  InserirNovo(&lista1, voo2);
-  InserirNovo(&lista1, voo3);
-  InserirNovo(&lista1, voo4);
-  InserirNovo(&lista1, voo5);
+  //InserirNovo(&lista1, voo);
+  //InserirNovo(&lista1, voo2);
+  //InserirNovo(&lista1, voo3);
+  //InserirNovo(&lista1, voo4);
+  //InserirNovo(&lista1, voo5);
 
-  TCelula *busca = ProcurarVoo(&lista1, 123);
-  ImprimirLVoos(lista1);
+  ItemMatriz item1;
+  IniciaItem(&item1);
 
-  //ImprimirTVoo(busca->Voo);
-  RemoverVoo(&lista1, 123);
+  InserirNovo(&item1.Lista, voo);
+  InserirNovo(&item1.Lista, voo2);
+  InserirNovo(&item1.Lista, voo3);
+  InserirNovo(&item1.Lista, voo4);
+  InserirNovo(&item1.Lista, voo5);
+  SetHreMntsLast(&item1);
+
+
+  SetNumVoo(&item1);
+  printf("%d\n", GetNumVoo(item1));
+  printf("%d:%d\n",GetHrLast(item1), GetMntsLast(item1));
+
+  //ImprimirLVoos(lista1);
+  //scanf("%d", &videntrada);
+
+  //RemoverVoo(&lista1, videntrada);
+  //ImprimirLVoos(lista1);
 
   return 0;
 }

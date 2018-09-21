@@ -55,6 +55,7 @@ void InserirNovo(TLista *Lista, TVoo Voo){
     }
     novacelula -> pProximo = antecessor -> pProximo;
     antecessor -> pProximo = novacelula;
+    printf("%d", novacelula->Voo.vid);
     return;
   }
 }
@@ -81,7 +82,7 @@ int RemoverVoo(TLista *pLista, int Id){
   CelulaaRemover = ProcurarVoo(pLista, Id);
   if(CelulaaRemover!= NULL){
     Antecessor = pLista -> pPrimeiro -> pProximo;
-    while(Antecessor -> pProximo != CelulaaRemover){
+    while(Antecessor -> pProximo->Voo.vid != CelulaaRemover->Voo.vid){
       Antecessor = Antecessor -> pProximo;
     }
 
@@ -91,6 +92,7 @@ int RemoverVoo(TLista *pLista, int Id){
 
     Antecessor -> pProximo = CelulaaRemover -> pProximo;
     free(CelulaaRemover);
+    printf("Removido com sucesso :)\n");
   }
   else{
     printf("Voo não encontrado :(\n");

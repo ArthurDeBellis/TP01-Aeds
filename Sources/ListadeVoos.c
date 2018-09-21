@@ -31,25 +31,38 @@ int Vazia(TLista Lista)
 
 
 void InserirNovo(TLista *Lista, TVoo Voo){
-
-  if(Vazia((*Lista))==1){
+  if(Vazia((*Lista))==1 || ((Voo.horaDecolagem * 60 )+Voo.minutosDecolagem) >= ((Lista->pUltimo->Voo.horaDecolagem *60 )+ Lista->pUltimo->Voo.minutosDecolagem)){
     InserirUltimo(Lista, Voo);
     return;
   }
 
-  if(((Voo.horaDecolagem * 60 )+Voo.minutosDecolagem) >= ((Lista->pUltimo->Voo.horaDecolagem *60 )+ Lista->pUltimo->Voo.minutosDecolagem) ){
-      InserirUltimo(Lista, Voo);
-      return;
+  else{
+    TCelula *novacelula = (TCelula*) malloc(sizeof(TCelula));
+    TCelula *antecessor = (Lista -> pPrimeiro);
+    int horario;
+    novacelula->Voo.vid = Voo.vid;
+    novacelula->Voo.horaDecolagem = Voo.horaDecolagem;
+    novacelula->Voo.minutosDecolagem = Voo.minutosDecolagem;
+    novacelula->Voo.horaPouso = Voo.horaPouso;
+    novacelula->Voo.minutosPouso = Voo.minutosPouso;
+    strcpy(novacelula->Voo.aeroportoDecolagem,Voo.aeroportoDecolagem);
+    strcpy(novacelula->Voo.aeroportoPouso,Voo.aeroportoPouso);
+    novacelula->Voo.identificadorPista = Voo.identificadorPista;
+
+    horario = (novacelula -> Voo.minutosDecolagem + (novacelula -> Voo.horaDecolagem * 60));
+    while(horario > (antecessor -> pProximo -> Voo.minutosDecolagem + (antecessor -> pProximo -> Voo.horaDecolagem*60))){
+        antecessor = antecessor -> pProximo;
+    }
+    novacelula -> pProximo = antecessor -> pProximo;
+    antecessor -> pProximo = novacelula;
+    return;
   }
-  
-
-
 }
 
 
 void Inserir(TLista *pLista, TVoo *Voo){
-  TCelula *novacelula = NULL, *auxiliar = NULL, *ultimomenor=NULL;
-  TCelula *celulalista = (pLista -> pPrimeiro);
+  TCelula *novacelula = (TCelula*) malloc(sizeof(TCelula));
+  TCelula *antecessor = (pLista -> pPrimeiro);
   int horario;
   novacelula = (TCelula*) malloc(sizeof(TCelula));
   if(!novacelula){
@@ -70,21 +83,11 @@ void Inserir(TLista *pLista, TVoo *Voo){
   //No loop while eu percorro pela lista parando apenas quando encontro horario igual ou
   //"mais tardio" que o horaio do voo que vai ser inserido, por isso com o ponteiro ultimomenor
   //eu aponto para a célula anterior à que está sendo analisada.
-  while(horario < (celulalista -> Voo.minutosDecolagem + (celulalista -> Voo.horaDecolagem*60))){
-    if (celulalista -> pProximo == NULL){
-      break;
-    }
-    else{
-      ultimomenor = celulalista;
-      auxiliar = celulalista -> pProximo;
-      celulalista = auxiliar;
-    }
+  while(horario < (antecessor -> pProximo -> Voo.minutosDecolagem + (antecessor -> pProximo -> Voo.horaDecolagem*60))){
+      antecessor = antecessor -> pProximo;
   }
-  novacelula -> pProximo = ultimomenor -> pProximo;
-  ultimomenor -> pProximo = novacelula;
-  if(ultimomenor == pLista -> pUltimo){
-    pLista -> pUltimo = ultimomenor -> pProximo;
-  }
+  novacelula -> pProximo = antecessor -> pProximo;
+  antecessor -> pProximo = novacelula;
 }
 //Aqui busco o voo pelo identificador e a função retorna o ponteiro da célula que contém tal voo
 TCelula *ProcurarVoo(TLista *pLista, int Id){

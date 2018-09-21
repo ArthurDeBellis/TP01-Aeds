@@ -10,7 +10,7 @@
 
 int main() {
   srand(time(NULL));
-  
+
   TVoo voo;
 
   IniciaVoo(&voo);
@@ -82,14 +82,11 @@ int main() {
   InserirNovo(&lista1, voo4);
   InserirNovo(&lista1, voo5);
 
-  /*printf("%s\n", lista1.pPrimeiro->pProximo->Voo.aeroportoDecolagem);
-  printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->Voo.aeroportoDecolagem);
-  printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->pProximo->Voo.aeroportoDecolagem);
-  printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->pProximo->pProximo->Voo.aeroportoDecolagem);
-  printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->pProximo->pProximo->pProximo->Voo.aeroportoDecolagem);
-*/
+  TCelula *busca = ProcurarVoo(&lista1, 123);
   ImprimirLVoos(lista1);
 
+  //ImprimirTVoo(busca->Voo);
+  RemoverVoo(&lista1, 123);
 
   return 0;
 }

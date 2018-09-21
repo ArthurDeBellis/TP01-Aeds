@@ -11,6 +11,7 @@ void IniciaItem (ItemMatriz *Item){
     Item->NumeroVoos = 0;
     Item->HrLast = 0;
     Item->MntsLast = 0;
+    SetLista(Item);
 }
 
 void ImprimirItem(ItemMatriz Item){
@@ -24,14 +25,13 @@ void SetLista(ItemMatriz *Item){
     IniciaLista(&Item->Lista);
 }
 void SetNumVoo(ItemMatriz *Item){
-    TCelula *Contador = NULL, *Auxiliar = NULL;
+    TCelula *Contador = NULL;
     int tamanho = 0;
     Contador = Item->Lista.pPrimeiro;
     while(Contador->pProximo != NULL){
         printf("Teste\n");
         tamanho++;
-        Auxiliar = Contador->pProximo;
-        Contador = Auxiliar;
+        Contador = Contador->pProximo;
     }
     Item->NumeroVoos = tamanho;
 }

@@ -88,8 +88,16 @@ int main() {
   printf("\n\n============================================\n\n" );
 
   //ImprimirTVoo(busca->Voo);
-  RemoverVoo(&lista1, GetVid(voo4));
+  //RemoverVoo(&lista1, GetVid(voo4));
 
   ImprimirLVoos(lista1);
+
+  ItemMatriz Matriz1;
+  IniciaItem(&Matriz1);
+  SetLista(&Matriz1);
+  SetNumVoo(&Matriz1);
+  SetHreMntsLast(&Matriz1);
+  ImprimirItem(Matriz1);
+
   return 0;
 }

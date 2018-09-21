@@ -13,6 +13,10 @@ void IniciaItem (ItemMatriz *Item){
     Item->MntsLast = 0;
 }
 
+void ImprimirItem(ItemMatriz Item){
+  printf("Numero de Voos: %d\n", Item.NumeroVoos);
+  printf("Horario da Ultima Atualização: %d:%d\n", Item.HrLast, Item.MntsLast);
+}
 //Funções set
 //Em SetNumVoo percorrerei a lista com loop while, assim ao final obtenho o tamanho da lista
 //linear
@@ -24,6 +28,7 @@ void SetNumVoo(ItemMatriz *Item){
     int tamanho = 0;
     Contador = Item->Lista.pPrimeiro;
     while(Contador->pProximo != NULL){
+        printf("Teste\n");
         tamanho++;
         Auxiliar = Contador->pProximo;
         Contador = Auxiliar;

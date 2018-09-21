@@ -20,10 +20,7 @@ void IniciaLista(TLista *pLista);
 //Função para ver se a lista é vazia
 int Vazia(TLista Lista);
 
-//Função inserir
-void Inserir(TLista *pLista, TVoo *Voo);
-
-//Função Inserir(em Andamento)
+//Função Inserir
 void InserirNovo(TLista *Lista, TVoo Voo);
 
 //Função para inserir na ultima posição da lista

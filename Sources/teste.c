@@ -82,11 +82,14 @@ int main() {
   InserirNovo(&lista1, voo4);
   InserirNovo(&lista1, voo5);
 
-  TCelula *busca = ProcurarVoo(&lista1, 123);
+  //TCelula *busca = ProcurarVoo(&lista1, 123);
   ImprimirLVoos(lista1);
 
-  //ImprimirTVoo(busca->Voo);
-  RemoverVoo(&lista1, 123);
+  printf("\n\n============================================\n\n" );
 
+  //ImprimirTVoo(busca->Voo);
+  RemoverVoo(&lista1, GetVid(voo4));
+
+  ImprimirLVoos(lista1);
   return 0;
 }

@@ -21,7 +21,7 @@ void InserirUltimo(TLista *Lista, TVoo Voo)
   Lista -> pUltimo = Lista -> pUltimo -> pProximo;
   Lista -> pUltimo -> Voo = Voo;
   Lista -> pUltimo -> pProximo = NULL;
-
+  printf("VID: %d\n", Voo.vid);
 }
 
 int Vazia(TLista Lista)
@@ -55,7 +55,7 @@ void InserirNovo(TLista *Lista, TVoo Voo){
     }
     novacelula -> pProximo = antecessor -> pProximo;
     antecessor -> pProximo = novacelula;
-    printf("%d", novacelula->Voo.vid);
+    printf("VID: %d\n", novacelula->Voo.vid);
     return;
   }
 }
@@ -81,7 +81,7 @@ int RemoverVoo(TLista *pLista, int Id){
   TCelula *CelulaaRemover= NULL, *Antecessor = NULL;
   CelulaaRemover = ProcurarVoo(pLista, Id);
   if(CelulaaRemover!= NULL){
-    Antecessor = pLista -> pPrimeiro -> pProximo;
+    Antecessor = pLista -> pPrimeiro;
     while(Antecessor -> pProximo->Voo.vid != CelulaaRemover->Voo.vid){
       Antecessor = Antecessor -> pProximo;
     }
@@ -103,7 +103,7 @@ void ImprimirLVoos(TLista Lista) {
   TCelula* Aux; Aux = Lista.pPrimeiro -> pProximo;
    while (Aux != NULL) {
      //printf("%d\n", Aux -> Item.Chave);
-     printf("Vid: %d\n", Aux -> Voo.vid);
+     printf("\nVid: %d\n", Aux -> Voo.vid);
      printf("Horario de Decolagem: %d:%d\n", Aux -> Voo.horaDecolagem, Aux -> Voo.minutosDecolagem);
      printf("Horario de Pouso: %d:%d\n", Aux -> Voo.horaPouso, Aux -> Voo.minutosPouso);
      printf("Aeroporto de Decolagem: %s\n", Aux -> Voo.aeroportoDecolagem);

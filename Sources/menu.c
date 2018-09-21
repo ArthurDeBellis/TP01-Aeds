@@ -62,3 +62,6 @@ void menu_de_saida(){
   printf("\n");
   printf("=================================================================\n");
 }
+void menu_arquivo(){
+  printf("PRTÓTIPO DO ARQUIVO\n");
+}

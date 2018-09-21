@@ -124,3 +124,15 @@ int RemoverVoo(TLista *pLista, int Id){
   free(CelulaaRemover);
   return 0;
 }
+void ImprimirLVoos(TLista Lista) {
+  TCelula* Aux; Aux = Lista.pPrimeiro -> pProximo;
+   while (Aux != NULL) {
+     //printf("%d\n", Aux -> Item.Chave);
+     printf("Vid: %d\n", Aux -> Voo.vid);
+     printf("Horario de Decolagem: %d:%d\n", Aux -> Voo.horaDecolagem, Aux -> Voo.minutosDecolagem);
+     printf("Horario de Pouso: %d:%d\n", Aux -> Voo.horaPouso, Aux -> Voo.minutosPouso);
+     printf("Aeroporto de Decolagem: %s\n", Aux -> Voo.aeroportoDecolagem);
+     printf("Aeroporto de Pouso: %s\n", Aux -> Voo.aeroportoPouso);
+     printf("Identificador de Pista: %d\n\n", Aux ->Voo.identificadorPista);
+
+     Aux = Aux -> pProximo; } }

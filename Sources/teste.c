@@ -2,17 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 #include "../Libs/ItemMatriz.h"
 #include "../Libs/ListadeVoos.h"
 #include "../Libs/MatrizVoos.h"
 #include "../Libs/voo.h"
 
 int main() {
+  srand(time(NULL));
+  
   TVoo voo;
 
   IniciaVoo(&voo);
   SetVid(&voo);
-  SetHrDecolagem(&voo, 13);
+  SetHrDecolagem(&voo, 15);
   SetMinutosDecolagem(&voo, 35);
   SetHrPouso(&voo, 18);
   SetMinutosPouso(&voo, 30);
@@ -37,7 +40,7 @@ int main() {
   IniciaVoo(&voo3);
   SetVid(&voo3);
   SetHrDecolagem(&voo3, 14);
-  SetMinutosDecolagem(&voo3, 05);
+  SetMinutosDecolagem(&voo3, 15);
   SetHrPouso(&voo3, 18);
   SetMinutosPouso(&voo3, 30);
   SetAeroportoDecolagem(&voo3, "CCC");
@@ -79,12 +82,13 @@ int main() {
   InserirNovo(&lista1, voo4);
   InserirNovo(&lista1, voo5);
 
-  printf("%s\n", lista1.pPrimeiro->pProximo->Voo.aeroportoDecolagem);
+  /*printf("%s\n", lista1.pPrimeiro->pProximo->Voo.aeroportoDecolagem);
   printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->Voo.aeroportoDecolagem);
   printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->pProximo->Voo.aeroportoDecolagem);
   printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->pProximo->pProximo->Voo.aeroportoDecolagem);
   printf("%s\n", lista1.pPrimeiro->pProximo->pProximo->pProximo->pProximo->pProximo->Voo.aeroportoDecolagem);
-
+*/
+  ImprimirLVoos(lista1);
 
 
   return 0;

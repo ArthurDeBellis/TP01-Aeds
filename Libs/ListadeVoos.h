@@ -35,4 +35,7 @@ int RemoverVoo(TLista *pLista, int Id);
 //Busca o vôo pelo identificador e não o remove.
 TCelula *ProcurarVoo (TLista *pLista, int Id);
 
+//Função para imprimir a lista de voos
+void ImprimirLVoos(TLista Lista);
+
 #endif

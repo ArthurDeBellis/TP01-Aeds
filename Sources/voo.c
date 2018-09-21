@@ -92,8 +92,9 @@ int GetIdPista(TVoo Voo)
 //Função para alterar o vid
 void SetVid(TVoo *Voo)
 {
-  srand(time(NULL));
+  //srand(time(NULL));
   Voo -> vid = (rand()%1000);
+  //srand(time(NULL));
 }
 
 //Função para alterar a hora de decolagem

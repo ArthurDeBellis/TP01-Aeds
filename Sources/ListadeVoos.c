@@ -21,7 +21,9 @@ void InserirUltimo(TLista *Lista, TVoo Voo)
   Lista -> pUltimo = Lista -> pUltimo -> pProximo;
   Lista -> pUltimo -> Voo = Voo;
   Lista -> pUltimo -> pProximo = NULL;
-  printf("VID: %d\n", Voo.vid);
+  printf("==========================================\n");
+  printf("    >>> Voo Cadastrado com o VID: %d <<<\n", Voo.vid);
+  printf("==========================================\n");
 }
 
 int Vazia(TLista Lista)
@@ -55,7 +57,9 @@ void InserirNovo(TLista *Lista, TVoo Voo){
     }
     novacelula -> pProximo = antecessor -> pProximo;
     antecessor -> pProximo = novacelula;
-    printf("VID: %d\n", novacelula->Voo.vid);
+    printf("==========================================\n");
+    printf("    >>> Voo Cadastrado com o VID: %d <<<\n", novacelula->Voo.vid);
+    printf("==========================================\n");
     return;
   }
 }

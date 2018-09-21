@@ -94,10 +94,12 @@ int main() {
 
 
   SetNumVoo(&item1);
-  printf("%d\n", GetNumVoo(item1));
-  printf("%d:%d\n",GetHrLast(item1), GetMntsLast(item1));
+  //printf("%d\n", GetNumVoo(item1));
+  //printf("%d:%d\n",GetHrLast(item1), GetMntsLast(item1));
+  ImprimirLVoos(item1.Lista);
+  ImprimirItem(item1);
 
-  //ImprimirLVoos(lista1);
+
   //scanf("%d", &videntrada);
 
   //RemoverVoo(&lista1, videntrada);

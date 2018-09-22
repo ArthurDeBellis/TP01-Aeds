@@ -29,6 +29,7 @@ void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   i = voo->horaDecolagem;
   j = voo->horaPouso + 1;
   InserirNovo(&Matriz->Matriz[i][j].Lista, *voo);
+  SetNumVoo(&Matriz->Matriz[i][j]);
   SetHreMntsLast(&Matriz->Matriz[i][j]);
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){

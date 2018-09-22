@@ -86,17 +86,17 @@ int main() {
   ItemMatriz item1;
   IniciaItem(&item1);
 
-  InserirNovo(&item1.Lista, voo);
-  InserirNovo(&item1.Lista, voo2);
-  InserirNovo(&item1.Lista, voo3);
-  InserirNovo(&item1.Lista, voo4);
-  InserirNovo(&item1.Lista, voo5);
+//  InserirNovo(&item1.Lista, voo);
+  //InserirNovo(&item1.Lista, voo2);
+  //InserirNovo(&item1.Lista, voo3);
+  //InserirNovo(&item1.Lista, voo4);
+  //InserirNovo(&item1.Lista, voo5);
   SetHreMntsLast(&item1);
   SetNumVoo(&item1);
   //printf("%d\n", GetNumVoo(item1));
   //printf("%d:%d\n",GetHrLast(item1), GetMntsLast(item1));
-  ImprimirLVoos(item1.Lista);
-  ImprimirItem(item1);
+  //ImprimirLVoos(item1.Lista);
+  //ImprimirItem(item1);
 
 
   //scanf("%d", &videntrada);
@@ -108,6 +108,8 @@ int main() {
 
   IniciaMatriz(&matrizDeVoos);
   InserirMVoo(&matrizDeVoos, &voo);
+  ImprimirItem(item1);
+  ImprimirMatriz(matrizDeVoos);
   printf("dia: %d\nmes: %d\nano: %d\nHrLastUpdate: %d\nMntsLastUpdate: %d\n", matrizDeVoos.dia, matrizDeVoos.mes, matrizDeVoos.ano, matrizDeVoos.HoradaUltimaAtualizacao, matrizDeVoos.MinutosUltimaAtualizacao);
   return 0;
 }

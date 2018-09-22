@@ -15,6 +15,8 @@ void IniciaItem (ItemMatriz *Item){
 }
 
 void ImprimirItem(ItemMatriz Item){
+  ImprimirLVoos(Item.Lista);
+  SetNumVoo(&Item);
   printf("Numero de Voos: %d\n", Item.NumeroVoos);
   printf("Horario da Ultima Atualização: %d:%d\n", Item.HrLast, Item.MntsLast);
 }

@@ -11,6 +11,7 @@
 int main() {
   srand(time(NULL));
 //  int videntrada=0, vid2 =0;
+/*
   TVoo voo;
 
   IniciaVoo(&voo);
@@ -104,6 +105,10 @@ int main() {
 
   //RemoverVoo(&lista1, videntrada);
   //ImprimirLVoos(lista1);
+*/
+  TipoMatriz matrizDeVoos;
 
+  IniciaMatriz(&matrizDeVoos);
+  printf("dia: %d\nmes: %d\nano: %d\nHrLastUpdate: %d\nMntsLastUpdate: %d\n", matrizDeVoos.dia, matrizDeVoos.mes, matrizDeVoos.ano, matrizDeVoos.HoradaUltimaAtualizacao, matrizDeVoos.MinutosUltimaAtualizacao);
   return 0;
 }

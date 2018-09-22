@@ -7,11 +7,14 @@
 #include "../Libs/voo.h"
 
 void IniciaMatriz(TipoMatriz *Matriz){
+  TipoMatriz **pMatriz;
+  pMatriz = &Matriz;
   int i, j;
+  pMatriz = (TipoMatriz **)malloc(24*sizeof(TipoMatriz *));
   for(i = 0; i < 24; i++){
+    pMatriz[i] = (TipoMatriz *)malloc(24*sizeof(TipoMatriz));
     for(j = 0; j < 24; j++){
-      IniciaItem(&Matriz -> Matriz[i][j]);
-      IniciaLista(&Matriz -> Matriz[i][j].Lista);
+      IniciaItem(&(*pMatriz) -> Matriz[i][j]);
     }
   }
   Matriz -> dia = 0;

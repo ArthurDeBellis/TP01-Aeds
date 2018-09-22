@@ -110,6 +110,8 @@ int main() {
   InserirMVoo(&matrizDeVoos, &voo);
   ImprimirItem(item1);
   ImprimirMatriz(matrizDeVoos);
+  RemoverMVoo(&matrizDeVoos, GetVid(voo));
+  ImprimirMatriz(matrizDeVoos);
   printf("dia: %d\nmes: %d\nano: %d\nHrLastUpdate: %d\nMntsLastUpdate: %d\n", matrizDeVoos.dia, matrizDeVoos.mes, matrizDeVoos.ano, matrizDeVoos.HoradaUltimaAtualizacao, matrizDeVoos.MinutosUltimaAtualizacao);
   return 0;
 }

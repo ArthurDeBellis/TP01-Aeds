@@ -14,7 +14,7 @@ void IniciaMatriz(TipoMatriz *Matriz){
   for(i = 0; i < 24; i++){
     pMatriz[i] = (TipoMatriz *)malloc(24*sizeof(TipoMatriz));
     for(j = 0; j < 24; j++){
-      IniciaItem(&(*pMatriz) -> Matriz[i][j]);
+      IniciaItem(&(Matriz) -> Matriz[i][j]);
     }
   }
   Matriz -> dia = 0;
@@ -28,7 +28,7 @@ void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   int i, j;
   i = voo->horaDecolagem;
   j = voo->horaPouso + 1;
-  //InserirNovo(&Matriz->Matriz[i][j].Lista, voo);
+  InserirNovo(&Matriz->Matriz[i][j].Lista, *voo);
   SetHreMntsLast(&Matriz->Matriz[i][j]);
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){

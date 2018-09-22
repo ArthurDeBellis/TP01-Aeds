@@ -11,7 +11,7 @@
 int main() {
   srand(time(NULL));
 //  int videntrada=0, vid2 =0;
-/*
+
   TVoo voo;
 
   IniciaVoo(&voo);
@@ -92,8 +92,6 @@ int main() {
   InserirNovo(&item1.Lista, voo4);
   InserirNovo(&item1.Lista, voo5);
   SetHreMntsLast(&item1);
-
-
   SetNumVoo(&item1);
   //printf("%d\n", GetNumVoo(item1));
   //printf("%d:%d\n",GetHrLast(item1), GetMntsLast(item1));
@@ -105,10 +103,11 @@ int main() {
 
   //RemoverVoo(&lista1, videntrada);
   //ImprimirLVoos(lista1);
-*/
+
   TipoMatriz matrizDeVoos;
 
   IniciaMatriz(&matrizDeVoos);
+  InserirMVoo(&matrizDeVoos, &voo);
   printf("dia: %d\nmes: %d\nano: %d\nHrLastUpdate: %d\nMntsLastUpdate: %d\n", matrizDeVoos.dia, matrizDeVoos.mes, matrizDeVoos.ano, matrizDeVoos.HoradaUltimaAtualizacao, matrizDeVoos.MinutosUltimaAtualizacao);
   return 0;
 }

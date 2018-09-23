@@ -79,7 +79,7 @@ void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, in
   int i, j;
   i = horaDecolagem;
   j = horaPouso + 1;
-  TCelula *pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo, *pAuxiliar;
+  TCelula *pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
   if(Matriz.Matriz[i][j].NumeroVoos != 0){
     while (pAtual != NULL){
       printf("=======================================================\n");
@@ -91,8 +91,7 @@ void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, in
       printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
       printf("=======================================================\n");
 
-      pAuxiliar = pAtual -> pProximo;
-      pAtual = pAuxiliar;
+      pAtual = pAtual -> pProximo;
     }
   }
   else{
@@ -104,7 +103,7 @@ void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, in
 void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
   int i, j;
   i = horaDecolagem;
-  TCelula *pAtual, *pAuxiliar;
+  TCelula *pAtual;
   for(j = 0; j < 24; j++)
   {
     if(Matriz.Matriz[i][j].NumeroVoos != 0){
@@ -119,8 +118,7 @@ void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
         printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
         printf("=======================================================\n");
 
-        pAuxiliar = pAtual->pProximo;
-        pAtual = pAuxiliar;
+        pAtual = pAtual->pProximo;
 
       }
     }
@@ -129,7 +127,7 @@ void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
 void ImprimirVoo3(TipoMatriz Matriz, int horaPouso, int minutosPouso){
   int i, j;
   j = horaPouso + 1;
-  TCelula *pAtual, *pAuxiliar;
+  TCelula *pAtual;
   for(i = 0; i < 24; i++)
   {
     if(Matriz.Matriz[i][j].NumeroVoos != 0){
@@ -144,15 +142,14 @@ void ImprimirVoo3(TipoMatriz Matriz, int horaPouso, int minutosPouso){
         printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
         printf("=======================================================\n");
 
-        pAuxiliar = pAtual->pProximo;
-        pAtual = pAuxiliar;
+        pAtual = pAtual->pProximo;
       }
     }
   }
 }
 void ImprimirMatriz(TipoMatriz Matriz){
   int i, j;
-  TCelula *pAtual, *pAuxiliar;
+  TCelula *pAtual;
   for(i = 0; i < 24; i ++)
   {
     for (j = 0; j < 24; j++)
@@ -169,8 +166,7 @@ void ImprimirMatriz(TipoMatriz Matriz){
           printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
           printf("=======================================================\n");
 
-          pAuxiliar = pAtual->pProximo;
-          pAtual = pAuxiliar;
+          pAtual = pAtual->pProximo;
         }
       }
     }
@@ -178,15 +174,14 @@ void ImprimirMatriz(TipoMatriz Matriz){
 }
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
     int linha, coluna,i,j,contador, maior =0;
-    TCelula *pAtual, *pAuxiliar;
+    TCelula *pAtual;
     for(linha=0; linha<24; linha++){
       contador = 0;
       for(coluna =0; coluna<24; coluna++){
           pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
           while (pAtual->pProximo != NULL){
               contador++;
-              pAuxiliar = pAtual->pProximo;
-              pAtual = pAuxiliar;
+              pAtual = pAtual->pProximo;
           }
           if (contador>=maior){
               i = linha;
@@ -202,15 +197,14 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
 }
 void EncontrarMenorHorario(TipoMatriz *Matriz){
     int linha, coluna,i,j,contador, menor =10000;
-    TCelula *pAtual, *pAuxiliar;
+    TCelula *pAtual;
     for(linha=0; linha<24; linha++){
         contador = 0;
         for(coluna =0; coluna<24; coluna++){
             pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
             while (pAtual->pProximo != NULL){
                 contador++;
-                pAuxiliar = pAtual->pProximo;
-                pAtual = pAuxiliar;
+                pAtual = pAtual->pProximo;
             }
             if (contador<=menor){
                 i = linha;

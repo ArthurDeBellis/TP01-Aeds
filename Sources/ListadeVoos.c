@@ -97,11 +97,12 @@ int RemoverVoo(TLista *pLista, int Id){
     Antecessor -> pProximo = CelulaaRemover -> pProximo;
     free(CelulaaRemover);
     printf("Removido com sucesso :)\n");
+    return 1;
   }
   else{
     printf("Voo não encontrado :(\n");
+    return 0;
   }
-  return 0;
 }
 void ImprimirLVoos(TLista Lista) {
   TCelula* Aux; Aux = Lista.pPrimeiro -> pProximo;

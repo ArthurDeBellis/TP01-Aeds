@@ -24,10 +24,7 @@ void menu_de_entradas(){
 
 void menu_de_opcoes(){
   printf("=================================================================\n");
-  printf("\n");
-  printf("                 Escolha uma das opções abaixo:\n");
-  printf("\n");
-  printf("=================================================================\n");
+  printf("Escolha uma das opções abaixo:\n");
   printf("\n");
   printf("  a. Iniciar a Matriz.\n");
   printf("  b. Inserir voo.\n");
@@ -63,5 +60,9 @@ void menu_de_saida(){
   printf("=================================================================\n");
 }
 void menu_arquivo(){
-  printf("PRTÓTIPO DO ARQUIVO\n");
+  printf("=================================================================\n");
+  printf("                        MODO ARQUIVO\n");
+  printf("=================================================================\n");
+  printf("\n");
+  printf("Entre com o nome do arquivo que deseja ler: ");
 }

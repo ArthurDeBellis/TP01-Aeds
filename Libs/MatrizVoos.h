@@ -53,6 +53,6 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz);
 
 void EncontrarListaMenosRecente(TipoMatriz *Matriz);
 
-void MatrizEspaca(TipoMatriz *Matriz); //Verificar se matriz é esparça
+void MatrizEsparca(TipoMatriz *Matriz); //Verificar se matriz é esparça
 
 #endif

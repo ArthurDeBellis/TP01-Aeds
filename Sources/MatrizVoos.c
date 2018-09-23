@@ -27,31 +27,24 @@ void IniciaMatriz(TipoMatriz *Matriz){
 void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   int i, j;
   i = voo->horaDecolagem;
-  j = voo->horaPouso + 1;
+  j = voo->horaPouso;
   InserirNovo(&Matriz->Matriz[i][j].Lista, *voo);
   SetNumVoo(&Matriz->Matriz[i][j]);
   SetHreMntsLast(&Matriz->Matriz[i][j]);
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){
   int i,j;
-  int contador = 0;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
       while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
         if(Matriz->Matriz[i][j].Lista.pUltimo->Voo.vid == vid){
           RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
           SetHreMntsLast(&Matriz->Matriz[i][j]);
+
         }
-        else{
-          contador++;
-          if(contador == 1){
-            printf("O voo não foi encontrado...\nVerifique o VID informado e tente novamente!\n");
-            break;
-          }
         }
       }
     }
-  }
 }
 
 void ProcurarMVoo(TipoMatriz *Matriz, int vid){
@@ -148,7 +141,7 @@ void ImprimirVoo3(TipoMatriz Matriz, int horaPouso, int minutosPouso){
   }
 }
 void ImprimirMatriz(TipoMatriz Matriz){
-  int i, j;
+  int i, j,cont = 0;
   TCelula *pAtual;
   for(i = 0; i < 24; i ++)
   {
@@ -167,109 +160,133 @@ void ImprimirMatriz(TipoMatriz Matriz){
           printf("=======================================================\n");
 
           pAtual = pAtual->pProximo;
+          cont++;
         }
       }
     }
+  }
+  if(cont==0){
+    printf("A matriz está vazia.\n");
   }
 }
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
-    int linha, coluna,i,j,contador, maior =0;
-    TCelula *pAtual;
-    for(linha=0; linha<24; linha++){
-      contador = 0;
+  int linha=0, coluna=0, numerodevoos, maior;
+  for(linha=0; linha<24; linha++){
       for(coluna =0; coluna<24; coluna++){
-          pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
-          while (pAtual->pProximo != NULL){
-              contador++;
-              pAtual = pAtual->pProximo;
+          numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
+          if ((linha+coluna)==0) {
+            maior = numerodevoos;
           }
-          if (contador>=maior){
-              i = linha;
-              j = coluna;
-              maior = contador;
+          else{
+            if(numerodevoos>maior ){
+              maior = numerodevoos;
+            }
           }
-    printf("i = %d e j = %d e quantidade de voos = %d\n", i, j, contador);
-
+        }
+      }
+  if(maior!=0){
+    for(linha=0; linha<24; linha++){
+      for(coluna =0; coluna<24; coluna++){
+        numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
+        if(maior==numerodevoos){
+            printf("Item com maior quantidade de voos: i = %d e j = %d e quantidade = %d\n", linha, coluna, maior);
+        }
       }
     }
-
-
-}
-void EncontrarMenorHorario(TipoMatriz *Matriz){
-    int linha, coluna,i,j,contador, menor =10000;
-    TCelula *pAtual;
-    for(linha=0; linha<24; linha++){
-        contador = 0;
-        for(coluna =0; coluna<24; coluna++){
-            pAtual = Matriz->Matriz[linha][coluna].Lista.pPrimeiro;
-            while (pAtual->pProximo != NULL){
-                contador++;
-                pAtual = pAtual->pProximo;
-            }
-            if (contador<=menor){
-                i = linha;
-                j = coluna;
-                menor = contador;
-            }
-    printf("i = %d e j = %d e quantidade de voos = %d\n", i, j, contador);
-
-      }
-    }
-
-}
-void EncontrarListaMaisRecente(TipoMatriz *Matriz){
-    int horas, minutos, minutoMaisRecente, horaMaisRecente, contador = 0, linha, coluna, i, j;
-    ItemMatriz *pAtual;
-    for(linha=0; linha<24; linha++){
-        for(coluna =0; coluna<24; coluna++){
-            pAtual = &(Matriz->Matriz[linha][coluna]);
-            horas = (pAtual->HrLast)*60;
-            minutos = (pAtual->MntsLast);
-            if (contador ==0){
-                contador++;
-                horaMaisRecente = horas;
-                minutoMaisRecente = minutos;
-                i = 0;
-                j = 0;
-            }else{
-                if ((horas+minutos)>=(horaMaisRecente+minutoMaisRecente)){
-                    horaMaisRecente = horas/60;
-                    minutoMaisRecente = minutos;
-                    i = linha;
-                    j = coluna;
-            }
-        }
-    }
-    printf("i = %d, j = %d, horario = %d:%d\n", i,j,horaMaisRecente,minutoMaisRecente);
-}
-}
-void EncontrarListaMenosRecente(TipoMatriz *Matriz){
-    int horas, minutos, minutoMenosRecente, horaMenosRecente, contador = 0, linha, coluna, i, j;
-    ItemMatriz *pAtual;
-    for(linha=0; linha<24; linha++){
-        for(coluna =0; coluna<24; coluna++){
-            pAtual = &(Matriz->Matriz[linha][coluna]);
-            horas = (pAtual->HrLast)*60;
-            minutos = (pAtual->MntsLast);
-            if (contador ==0){
-                contador++;
-                horaMenosRecente = horas;
-                minutoMenosRecente = minutos;
-                i = 0;
-                j = 0;
-            }else{
-                if ((horas+minutos)<=(horaMenosRecente+minutoMenosRecente)){
-                    horaMenosRecente = horas/60;
-                    minutoMenosRecente = minutos;
-                    i = linha;
-                    j = coluna;
-                }
-            }
-        }
-    printf("i = %d, j = %d, horario = %d:%d\n", i,j,horaMenosRecente,minutoMenosRecente);
+  }
+  else{
+    printf("A matriz está vazia\n" );
   }
 }
-void MatrizEspaca(TipoMatriz *Matriz){
+void EncontrarMenorHorario(TipoMatriz *Matriz){
+    int linha=0, coluna=0, numerodevoos, menor =10000;
+    for(linha=0; linha<24; linha++){
+        for(coluna =0; coluna<24; coluna++){
+            numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
+            if ((linha+coluna)==0 && numerodevoos != 0) {
+              menor = numerodevoos;
+            }
+            else{
+              if(numerodevoos<menor && numerodevoos != 0){
+                menor = numerodevoos;
+              }
+            }
+          }
+        }
+    if(menor!=10000){
+      for(linha=0; linha<24; linha++){
+          for(coluna =0; coluna<24; coluna++){
+            numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
+              if(menor==numerodevoos){
+                  printf("Item com menor quantidade de voos: i = %d e j = %d e quantidade = %d\n", linha, coluna, menor);
+              }
+          }
+      }
+    }
+    else{
+      printf("A matriz está vazia\n" );
+    }
+}
+void EncontrarListaMaisRecente(TipoMatriz *Matriz){
+  int horas= 0, minutos = 0, minutoMaisRecente =0, horaMaisRecente=0, linha, coluna;
+  for(linha=0; linha<24; linha++){
+      for(coluna =0; coluna<24; coluna++){
+          horas = Matriz->Matriz[linha][coluna].HrLast*60;
+          minutos = Matriz->Matriz[linha][coluna].MntsLast;
+          if (horas+minutos != 0){
+            if((horas+minutos)>=((horaMaisRecente*60)+minutoMaisRecente)){
+              horaMaisRecente = horas;
+              minutoMaisRecente = minutos;
+            }
+          }
+      }
+    }
+    if(horaMaisRecente!=0){
+      for(linha=0; linha<24; linha++){
+          for(coluna =0; coluna<24; coluna++){
+            horas = Matriz->Matriz[linha][coluna].HrLast*60;
+            minutos = Matriz->Matriz[linha][coluna].MntsLast;
+            if((horas+minutos)==(horaMaisRecente+minutoMaisRecente)){
+              printf("Mais recente: i = %d, j = %d, horario = %d:%d\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
+            }
+          }
+      }
+    }
+    else{
+      printf("A matriz está vazia.\n");
+    }
+}
+void EncontrarListaMenosRecente(TipoMatriz *Matriz){
+    int horas= 0, minutos = 0, minutoMenosRecente =59, horaMenosRecente=23, linha, coluna;
+    for(linha=0; linha<24; linha++){
+        for(coluna =0; coluna<24; coluna++){
+            horas = Matriz->Matriz[linha][coluna].HrLast*60;
+            minutos = Matriz->Matriz[linha][coluna].MntsLast;
+            if (horas+minutos != 0){
+              if((horas+minutos)<=((horaMenosRecente*60)+minutoMenosRecente)){
+                horaMenosRecente = horas;
+                minutoMenosRecente = minutos;
+              }
+            }
+        }
+      }
+      if(horaMenosRecente!=23){
+        for(linha=0; linha<24; linha++){
+            for(coluna =0; coluna<24; coluna++){
+              horas = Matriz->Matriz[linha][coluna].HrLast*60;
+              minutos = Matriz->Matriz[linha][coluna].MntsLast;
+              if((horas+minutos)==(horaMenosRecente+minutoMenosRecente)){
+                printf("Menos recente: i = %d, j = %d, horario = %d:%d\n", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
+
+              }
+            }
+        }
+      }
+      else{
+        printf("A matriz está vazia.\n");
+      }
+}
+void MatrizEsparca(TipoMatriz *Matriz){
     int contador =0, linha, coluna;
     TCelula *pAtual;
     for(linha=0; linha<24; linha++){

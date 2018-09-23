@@ -33,31 +33,47 @@ void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   SetHreMntsLast(&Matriz->Matriz[i][j]);
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){
-  int i,j,contador=0;
+  int i,j;
+  int contador = 0;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
       while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
-        if(Matriz->Matriz[i][j].Lista.pPrimeiro->Voo.vid == vid){
+        if(Matriz->Matriz[i][j].Lista.pUltimo->Voo.vid == vid){
           RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
           SetHreMntsLast(&Matriz->Matriz[i][j]);
+        }
+        else{
           contador++;
+          if(contador == 1){
+            printf("O voo não foi encontrado...\nVerifique o VID informado e tente novamente!\n");
+            break;
+          }
         }
       }
     }
   }
-  if(contador ==0){
-    printf("Voo nao encontrado.\n");
-  }
 }
+
 void ProcurarMVoo(TipoMatriz *Matriz, int vid){
   int i, j;
-  TCelula *Encontrado;
+  int contador = 0;
   for (i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
-      Encontrado = ProcurarVoo(&Matriz->Matriz[i][j].Lista, vid);
+      while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
+        if(Matriz->Matriz[i][j].Lista.pUltimo->Voo.vid == vid){
+          printf("...TESTE...\nVoo encontrado :P\n");
+          break;
+        }
+        else{
+          contador++;
+          if(contador == 1){
+            printf("O voo não foi encontrado...\nVerifique o VID informado e tente novamente!\n");
+            break;
+          }
+        }
+      }
     }
   }
-
 }
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso){
   int i, j;

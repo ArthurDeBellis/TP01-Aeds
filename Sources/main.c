@@ -58,29 +58,30 @@ int main(){
           case 2:
             IniciaVoo(&vooReserva);
             SetVid(&vooReserva);
-            printf("Horário de Decolagem: (HH:MM)\n");
+            printf("Horário de Decolagem(HH:MM): ");
             scanf("%d:%d", &vooReserva.horaDecolagem, &vooReserva.minutosDecolagem);
-            printf("Horário de Pouso:(HH:MM)\n");
+            printf("Horário de Pouso(HH:MM): ");
             scanf("%d:%d", &vooReserva.horaPouso, &vooReserva.minutosPouso);
-            printf("Aeroporto de decolagem:\n");
+            printf("Aeroporto de decolagem: ");
             scanf("%s", vooReserva.aeroportoDecolagem);
-            printf("Aeroporto de pouso:\n");
+            printf("Aeroporto de pouso: ");
             scanf("%s", vooReserva.aeroportoPouso);
-            printf("Identificador de pista:\n");
+            printf("Identificador da pista: ");
             scanf("%d", &vooReserva.identificadorPista);
             InserirMVoo(&Principal, &vooReserva);
-            printf("VID do voo cadastrado: %d\n", vooReserva.vid);
             break;
 
           case 3:
-            printf("Digite o Vid do voo a ser removido: \n");
+            printf("Digite o Vid do voo a ser removido: ");
             scanf("%d", &vid);
+            printf("\n");
             RemoverMVoo(&Principal, vid);
             break;
 
           case 4:
-            printf("Digite o Vid do voo a ser pesquisado: \n");
+            printf("Digite o Vid do voo a ser pesquisado: ");
             scanf("%d", &vid);
+            printf("\n");
             ProcurarMVoo(&Principal, vid);
             break;
 

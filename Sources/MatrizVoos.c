@@ -61,13 +61,13 @@ void ProcurarMVoo(TipoMatriz *Matriz, int vid){
     for(j = 0; j < 24; j++){
       while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
         if(Matriz->Matriz[i][j].Lista.pUltimo->Voo.vid == vid){
-          printf("...TESTE...\nVoo encontrado :P\n");
+          printf("O voo informado está cadastrado!\n");
           break;
         }
         else{
           contador++;
           if(contador == 1){
-            printf("O voo não foi encontrado...\nVerifique o VID informado e tente novamente!\n");
+            printf("O voo não foi encontrado...\nVerifique se o VID informado está correto e tente novamente!\n");
             break;
           }
         }

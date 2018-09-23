@@ -105,13 +105,19 @@ int main() {
   //ImprimirLVoos(lista1);
 
   TipoMatriz matrizDeVoos;
-
+  TipoMatriz matrizDeVoos2;
   IniciaMatriz(&matrizDeVoos);
+  IniciaMatriz(&matrizDeVoos2);
   InserirMVoo(&matrizDeVoos, &voo);
-  ImprimirItem(item1);
+  //ImprimirItem(item1);
+  InserirMVoo(&matrizDeVoos2, &voo2);
   ImprimirMatriz(matrizDeVoos);
-  RemoverMVoo(&matrizDeVoos, GetVid(voo));
+  ImprimirMatriz(matrizDeVoos2);
+  RemoverMVoo(&matrizDeVoos2, 9);
+  RemoverMVoo(&matrizDeVoos, 18);
   ImprimirMatriz(matrizDeVoos);
-  printf("dia: %d\nmes: %d\nano: %d\nHrLastUpdate: %d\nMntsLastUpdate: %d\n", matrizDeVoos.dia, matrizDeVoos.mes, matrizDeVoos.ano, matrizDeVoos.HoradaUltimaAtualizacao, matrizDeVoos.MinutosUltimaAtualizacao);
+  ImprimirMatriz(matrizDeVoos2);
+
+  //printf("dia: %d\nmes: %d\nano: %d\nHrLastUpdate: %d\nMntsLastUpdate: %d\n", matrizDeVoos.dia, matrizDeVoos.mes, matrizDeVoos.ano, matrizDeVoos.HoradaUltimaAtualizacao, matrizDeVoos.MinutosUltimaAtualizacao);
   return 0;
 }

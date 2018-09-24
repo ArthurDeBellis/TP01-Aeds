@@ -34,39 +34,46 @@ void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){
   int i,j;
+  TLista *lista = NULL;
   for(i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
-      while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
-        if(Matriz->Matriz[i][j].Lista.pUltimo->Voo.vid == vid){
-          RemoverVoo(&Matriz->Matriz[i][j].Lista, vid);
-          SetHreMntsLast(&Matriz->Matriz[i][j]);
-
-        }
-        }
+      lista = &Matriz->Matriz[i][j].Lista;
+      if(RemoverVoo(lista, vid)){
+        SetHreMntsLast(&Matriz->Matriz[i][j]);
+        return;
       }
-    }
-}
 
-void ProcurarMVoo(TipoMatriz *Matriz, int vid){
+    }
+  }
+
+    printf("Voo não encontrado.\n");
+  }
+
+
+int ProcurarMVoo(TipoMatriz *Matriz, int vid){
   int i, j;
-  int contador = 0;
+  TLista *lista = NULL;
+  TCelula *retorno = NULL;
   for (i = 0; i < 24; i++){
     for(j = 0; j < 24; j++){
-      while(Matriz->Matriz[i][j].Lista.pPrimeiro->pProximo != NULL){
-        if(Matriz->Matriz[i][j].Lista.pUltimo->Voo.vid == vid){
+      lista = &Matriz->Matriz[i][j].Lista;
+      retorno = ProcurarVoo(lista, vid);
+      if(retorno!=NULL){
           printf("O voo informado está cadastrado!\n");
-          break;
-        }
-        else{
-          contador++;
-          if(contador == 1){
-            printf("O voo não foi encontrado...\nVerifique se o VID informado está correto e tente novamente!\n");
-            break;
-          }
-        }
+          printf("=======================================================\n");
+          printf("Vid: %d\n", retorno->Voo.vid);
+          printf("Horario de Decolagem: %d:%d\n", retorno->Voo.horaDecolagem,retorno->Voo.minutosDecolagem);
+          printf("Horario de Pouso: %d:%d\n", retorno->Voo.horaPouso, retorno->Voo.minutosPouso);
+          printf("Aeroporto de Decolagem: %s\n", retorno->Voo.aeroportoDecolagem);
+          printf("Aeroporto de Pouso: %s\n", retorno->Voo.aeroportoPouso);
+          printf("Identificador de Pista: %d\n", retorno->Voo.identificadorPista);
+          printf("=======================================================\n");
+          return 1;
       }
     }
   }
+  printf("Voo não encontrado.\n");
+  return 0;
 }
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso){
   int i, j;

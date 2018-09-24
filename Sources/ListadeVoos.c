@@ -68,15 +68,15 @@ void InserirNovo(TLista *Lista, TVoo Voo){
 
 //Aqui busco o voo pelo identificador e a função retorna o ponteiro da célula que contém tal voo
 TCelula *ProcurarVoo(TLista *pLista, int Id){
-    TCelula *retorno = pLista -> pPrimeiro -> pProximo;
+    TCelula *retorno = pLista -> pPrimeiro ;
 
-    while(retorno -> Voo.vid != Id){
-      if (retorno->pProximo==NULL){
-        return NULL;
+    while(retorno->pProximo!=NULL){
+      if (retorno -> pProximo->Voo.vid == Id){
+        return retorno->pProximo;
       }
       retorno = retorno->pProximo;
       }
-  return retorno;
+  return NULL;
 }
 //Aqui fazemos o uso da função ProcuraVoo para encontrar o voo a ser removido e também buscamos o
 //seu antecessor(que contém seu endereço), para pegar o endereço guardado na célula a ser
@@ -100,7 +100,6 @@ int RemoverVoo(TLista *pLista, int Id){
     return 1;
   }
   else{
-    printf("Voo não encontrado :(\n");
     return 0;
   }
 }

@@ -31,9 +31,9 @@ int main(){
 
   char nomeArquivo[50];
 
-  printf("=================================================================\n");
-  printf("|                      Seja Bem-vindo(a)!                       |\n");
-  printf("=================================================================\n");
+  printf("====================================================================\n");
+  printf("|                      Seja Bem-vindo(a)!                          |\n");
+  printf("====================================================================\n");
   printf("\n");
 
   while(modoAuxiliar != 0){
@@ -70,7 +70,7 @@ int main(){
       */
       operadorAuxiliar = 1;
 
-      printf("=================================================================\n");
+      printf("====================================================================\n");
       printf("                       MODO INTERATIVO\n");
       while(operadorAuxiliar != 0){
         menu_de_opcoes();
@@ -95,7 +95,9 @@ int main(){
           case 1:
             IniciaMatriz(&Principal);
             printf("\n");
-            printf("A matriz foi inicializada!\n");
+            printf("====================================================================\n");
+            printf("\n               >>> A MATRIZ FOI INICIALIZADA! <<<\n\n");
+            printf("====================================================================\n\n");
             break;
 
           case 2:
@@ -145,23 +147,23 @@ int main(){
             break;
 
           case 5:
-            printf("Digite a hora de decolagem: \n");
+            printf("Horário de Decolagem no formato HH:MM - ");
             scanf("%d:%d",&hrDecolagem, &minDecolagem);
-            printf("Digite a hora de pouso: \n");
+            printf("Horário de Pouso no formato HH:MM - ");
             scanf("%d:%d",&hrPouso, &minPouso);
             ImprimirVoo1(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
             break;
 
           case 6:
-            printf("Entre com o horário de decolagem: \n");
+            printf("Horário de Decolagem no formato HH:MM - ");
             scanf("%d:%d", &hrDecolagem, &minDecolagem);
             ImprimirVoo2(Principal, hrDecolagem, minDecolagem);
             break;
 
           case 7:
-            printf("Entre com o horário de decolagem: \n");
-            scanf("%d:%d", &hrDecolagem, &minDecolagem);
-            ImprimirVoo2(Principal, hrDecolagem, minDecolagem);
+            printf("Horário de Pouso no formato HH:MM - ");
+            scanf("%d:%d", &hrPouso, &minPouso);
+            ImprimirVoo3(Principal, hrPouso, minPouso);
             break;
 
           case 8:
@@ -185,7 +187,7 @@ int main(){
             break;
 
           case 13:
-            MatrizEspaca(&Principal);
+            MatrizEsparca(&Principal);
             break;
 
           case 19:

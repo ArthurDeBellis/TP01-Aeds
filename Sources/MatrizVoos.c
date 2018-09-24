@@ -27,7 +27,9 @@ void IniciaMatriz(TipoMatriz *Matriz){
 void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   int i, j;
   i = voo->horaDecolagem;
-  j = voo->horaPouso;
+  j = voo->horaPouso;//+1;
+  //if(voo->horaPouso >= 23)
+  //  j = 0;
   InserirNovo(&Matriz->Matriz[i][j].Lista, *voo);
   SetNumVoo(&Matriz->Matriz[i][j]);
   SetHreMntsLast(&Matriz->Matriz[i][j]);
@@ -45,8 +47,9 @@ void RemoverMVoo(TipoMatriz *Matriz, int vid){
 
     }
   }
-
-    printf("Voo não encontrado.\n");
+    printf("=================================================================\n\n");
+    printf("                  >>> Voo não encontrado. <<<\n\n");
+    printf("=================================================================\n\n");
   }
 
 
@@ -59,45 +62,41 @@ int ProcurarMVoo(TipoMatriz *Matriz, int vid){
       lista = &Matriz->Matriz[i][j].Lista;
       retorno = ProcurarVoo(lista, vid);
       if(retorno!=NULL){
-          printf("O voo informado está cadastrado!\n");
-          printf("=======================================================\n");
-          printf("Vid: %d\n", retorno->Voo.vid);
-          printf("Horario de Decolagem: %d:%d\n", retorno->Voo.horaDecolagem,retorno->Voo.minutosDecolagem);
-          printf("Horario de Pouso: %d:%d\n", retorno->Voo.horaPouso, retorno->Voo.minutosPouso);
-          printf("Aeroporto de Decolagem: %s\n", retorno->Voo.aeroportoDecolagem);
-          printf("Aeroporto de Pouso: %s\n", retorno->Voo.aeroportoPouso);
-          printf("Identificador de Pista: %d\n", retorno->Voo.identificadorPista);
-          printf("=======================================================\n");
+          printf("====================================================================\n\n");
+          printf("             >>> O voo informado está cadastrado! <<<\n\n");
+          printf("====================================================================\n\n");
           return 1;
       }
     }
   }
-  printf("Voo não encontrado.\n");
+  printf("=================================================================\n\n");
+  printf("                  >>> Voo não encontrado. <<<\n\n");
+  printf("=================================================================\n\n");
   return 0;
 }
 void ImprimirVoo1(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem, int horaPouso, int minutosPouso){
   int i, j;
   i = horaDecolagem;
-  j = horaPouso + 1;
+  j = horaPouso;
   TCelula *pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
   if(Matriz.Matriz[i][j].NumeroVoos != 0){
     while (pAtual != NULL){
-      printf("=======================================================\n");
+      printf("==========================================================\n\n");
       printf("Vid: %d\n", pAtual->Voo.vid);
       printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
       printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
       printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
       printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
       printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
-      printf("=======================================================\n");
+      printf("\n==========================================================\n\n");
 
       pAtual = pAtual -> pProximo;
     }
   }
   else{
-    printf("==========================================================\n");
-    printf("\n    >>>Nao existe voos cadastrados nesse horario <<<\n");
-    printf("==========================================================\n");
+    printf("==========================================================\n\n");
+    printf("\n    >>>Nao existe voos cadastrados nesse horario <<<\n\n");
+    printf("==========================================================\n\n");
   }
 }
 void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
@@ -109,14 +108,14 @@ void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
     if(Matriz.Matriz[i][j].NumeroVoos != 0){
       pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
       while (pAtual != NULL){
-        printf("=======================================================\n");
+        printf("==========================================================\n\n");
         printf("Vid: %d\n", pAtual->Voo.vid);
         printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
         printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
         printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
         printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
         printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
-        printf("=======================================================\n");
+        printf("==========================================================\n\n");
 
         pAtual = pAtual->pProximo;
 
@@ -126,21 +125,21 @@ void ImprimirVoo2(TipoMatriz Matriz, int horaDecolagem, int minutosDecolagem){
 }
 void ImprimirVoo3(TipoMatriz Matriz, int horaPouso, int minutosPouso){
   int i, j;
-  j = horaPouso + 1;
+  j = horaPouso;
   TCelula *pAtual;
   for(i = 0; i < 24; i++)
   {
     if(Matriz.Matriz[i][j].NumeroVoos != 0){
       pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
       while (pAtual != NULL){
-        printf("=======================================================\n");
+        printf("==========================================================\n\n");
         printf("Vid: %d\n", pAtual->Voo.vid);
         printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
         printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
         printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
         printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
         printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
-        printf("=======================================================\n");
+        printf("==========================================================\n\n");
 
         pAtual = pAtual->pProximo;
       }
@@ -157,14 +156,14 @@ void ImprimirMatriz(TipoMatriz Matriz){
       if(Matriz.Matriz[i][j].NumeroVoos != 0){
         pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
         while (pAtual != NULL){
-          printf("=======================================================\n");
+          printf("=============================================================\n\n");
           printf("Vid: %d\n", pAtual->Voo.vid);
           printf("Horario de Decolagem: %d:%d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
           printf("Horario de Pouso: %d:%d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
           printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
           printf("Aeroporto de Pouso: %s\n", pAtual->Voo.aeroportoPouso);
           printf("Identificador de Pista: %d\n", pAtual->Voo.identificadorPista);
-          printf("=======================================================\n");
+          printf("=============================================================\n\n");
 
           pAtual = pAtual->pProximo;
           cont++;
@@ -173,7 +172,9 @@ void ImprimirMatriz(TipoMatriz Matriz){
     }
   }
   if(cont==0){
-    printf("A matriz está vazia.\n");
+    printf("====================================================================\n\n");
+    printf("              >>> Não existem voos cadastrados. <<<\n\n");
+    printf("====================================================================\n\n");
   }
 }
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
@@ -196,13 +197,17 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
       for(coluna =0; coluna<24; coluna++){
         numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
         if(maior==numerodevoos){
-            printf("Item com maior quantidade de voos: i = %d e j = %d e quantidade = %d\n", linha, coluna, maior);
+            printf("====================================================================\n\n");
+            printf("Item com maior quantidade de voos: i = %d e j = %d e quantidade = %d\n\n", linha, coluna, maior);
+            printf("====================================================================\n\n");
         }
       }
     }
   }
   else{
-    printf("A matriz está vazia\n" );
+    printf("====================================================================\n\n");
+    printf("              >>> Não existem voos cadastrados. <<<\n\n");
+    printf("====================================================================\n\n");
   }
 }
 void EncontrarMenorHorario(TipoMatriz *Matriz){
@@ -225,13 +230,17 @@ void EncontrarMenorHorario(TipoMatriz *Matriz){
           for(coluna =0; coluna<24; coluna++){
             numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
               if(menor==numerodevoos){
-                  printf("Item com menor quantidade de voos: i = %d e j = %d e quantidade = %d\n", linha, coluna, menor);
+                  printf("====================================================================\n\n");
+                  printf("Item com menor quantidade de voos: i = %d e j = %d e quantidade = %d\n\n", linha, coluna, menor);
+                  printf("====================================================================\n\n");
               }
           }
       }
     }
     else{
-      printf("A matriz está vazia\n" );
+      printf("====================================================================\n\n");
+      printf("              >>> Não existem voos cadastrados. <<<\n\n");
+      printf("====================================================================\n\n");
     }
 }
 void EncontrarListaMaisRecente(TipoMatriz *Matriz){
@@ -254,13 +263,17 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
             horas = Matriz->Matriz[linha][coluna].HrLast*60;
             minutos = Matriz->Matriz[linha][coluna].MntsLast;
             if((horas+minutos)==(horaMaisRecente+minutoMaisRecente)){
-              printf("Mais recente: i = %d, j = %d, horario = %d:%d\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
+              printf("====================================================================\n\n");
+              printf("Mais recente: i = %d, j = %d, horario = %d:%d\n\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
+              printf("====================================================================\n\n");
             }
           }
       }
     }
     else{
-      printf("A matriz está vazia.\n");
+      printf("====================================================================\n\n");
+      printf("              >>> Não existem voos cadastrados. <<<\n\n");
+      printf("====================================================================\n\n");
     }
 }
 void EncontrarListaMenosRecente(TipoMatriz *Matriz){
@@ -283,14 +296,18 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
               horas = Matriz->Matriz[linha][coluna].HrLast*60;
               minutos = Matriz->Matriz[linha][coluna].MntsLast;
               if((horas+minutos)==(horaMenosRecente+minutoMenosRecente)){
-                printf("Menos recente: i = %d, j = %d, horario = %d:%d\n", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
+                printf("====================================================================\n\n");
+                printf("Menos recente: i = %d, j = %d, horario = %d:%d\\nn", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
+                printf("====================================================================\n\n");
 
               }
             }
         }
       }
       else{
-        printf("A matriz está vazia.\n");
+        printf("====================================================================\n\n");
+        printf("              >>> Não existem voos cadastrados. <<<\n\n");
+        printf("====================================================================\n\n");
       }
 }
 void MatrizEsparca(TipoMatriz *Matriz){
@@ -305,8 +322,12 @@ void MatrizEsparca(TipoMatriz *Matriz){
         }
     }
     if(contador>=384){
-      printf("É esparça.\n");
+      printf("====================================================================\n\n");
+      printf("                        >>> É esparça. <<<\n\n");
+      printf("====================================================================\n\n");
     }else{
-      printf("Não é esparça.\n");
+      printf("====================================================================\n\n");
+      printf("                       >>> Não é esparça. <<<\n\n");
+      printf("====================================================================\n\n");
     }
 }

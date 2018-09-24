@@ -8,34 +8,28 @@ typedef struct Celula{
   struct Celula* pProximo;
 }TCelula;
 
-//Aqui criei a lista, que irá conter apenas os endereços da primeira e última célula.
+//Aqui criei a lista, que irá conter apenas os ponteiros da primeira e última célula.
 typedef struct {
   TCelula* pPrimeiro;
   TCelula* pUltimo;
 }TLista;
 
-//Função inicializa, que irá dar a célula cabeça para a lista.
-void IniciaLista(TLista *pLista);
+/*--------------------------------------------------------------------------------------*/
+                                       //Funções
+/*--------------------------------------------------------------------------------------*/
 
-//Função para ver se a lista é vazia
-int Vazia(TLista Lista);
+void IniciaLista(TLista *pLista); //Função inicializa, que irá dar a célula cabeça para a lista.
 
-//Função inserir
-void Inserir(TLista *pLista, TVoo *Voo);
+int Vazia(TLista Lista); //Função para ver se a lista é vazia
 
-//Função Inserir(em Andamento)
-void InserirNovo(TLista *Lista, TVoo Voo);
+void InserirNovo(TLista *Lista, TVoo Voo); //Função para inserir a celula na posição correta
 
-//Função para inserir na ultima posição da lista
-void InserirUltimo(TLista *Lista, TVoo Voo);
+void InserirUltimo(TLista *Lista, TVoo Voo); //Função para inserir na ultima posição da lista
 
-//Busca o vôo pelo identificador, remove da lista e retorna.
-int RemoverVoo(TLista *pLista, int Id);
+int RemoverVoo(TLista *pLista, int Id); //Função para buscar o vôo pelo identificador, remover da lista e o retornar.
 
-//Busca o vôo pelo identificador e não o remove.
-TCelula *ProcurarVoo (TLista *pLista, int Id);
+TCelula *ProcurarVoo (TLista *pLista, int Id); //Busca o vôo pelo identificador e não o remove.
 
-//Função para imprimir a lista de voos
-void ImprimirLVoos(TLista Lista);
+void ImprimirLVoos(TLista Lista); //Função para imprimir a lista de voos
 
 #endif

@@ -4,20 +4,24 @@
 #include "../Libs/voo.h"
 #include "../Libs/ListadeVoos.h"
 
+/*--------------------------------------------------------------------------------------*/
+                                       //Funções
+/*--------------------------------------------------------------------------------------*/
 
+//--------------------------------------------------------------------------------------------
 //Função inicializa dando à lista uma célula cabeça
 void IniciaLista(TLista *pLista){
-  pLista -> pPrimeiro = (TCelula*) malloc(sizeof(TCelula));
+  pLista -> pPrimeiro = (TCelula*) malloc(sizeof(TCelula)); //Alocamos a celula na memoria
   pLista -> pUltimo = pLista -> pPrimeiro;
   pLista -> pUltimo -> pProximo = NULL;
 }
-//Aqui alocamos um novo espaço para a célula a ser inserida e também buscamos o lugar que
-//ela ocupará na lista.
+//--------------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------------
+//Função para inserir a celula na ultima posição
 void InserirUltimo(TLista *Lista, TVoo Voo)
 {
-
-  Lista -> pUltimo -> pProximo = (TCelula *) malloc(sizeof(TCelula));
+  Lista -> pUltimo -> pProximo = (TCelula *) malloc(sizeof(TCelula)); //Alocamos a celula na memoria
   Lista -> pUltimo = Lista -> pUltimo -> pProximo;
   Lista -> pUltimo -> Voo = Voo;
   Lista -> pUltimo -> pProximo = NULL;
@@ -25,23 +29,29 @@ void InserirUltimo(TLista *Lista, TVoo Voo)
   printf("              >>> Voo Cadastrado com o VID: %d <<<\n\n", Voo.vid);
   printf("====================================================================\n\n");
 }
+//--------------------------------------------------------------------------------------------
 
+//--------------------------------------------------------------------------------------------
+//Função para ver se a lista é vazia
 int Vazia(TLista Lista)
 {
-  return (Lista.pPrimeiro == Lista.pUltimo);
+  return (Lista.pPrimeiro == Lista.pUltimo); //Retorna 1 se for vazia
 }
+//--------------------------------------------------------------------------------------------
 
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Função para inserir a celula na posição correta
 void InserirNovo(TLista *Lista, TVoo Voo){
   if(Vazia((*Lista))==1 || ((Voo.horaDecolagem * 60 )+Voo.minutosDecolagem) >= ((Lista->pUltimo->Voo.horaDecolagem *60 )+ Lista->pUltimo->Voo.minutosDecolagem)){
-    InserirUltimo(Lista, Voo);
-    return;
+    InserirUltimo(Lista, Voo); //Chamamos a função para inserir na ultima posição caso a lista seja vazia ou o novo voo seja maior que o ultimo
+    return; //Finaliza a função
   }
 
-  else{
-    TCelula *novacelula = (TCelula*) malloc(sizeof(TCelula));
+  else{ // Caso não atenda a condição acima, entramos nessa condição
+    TCelula *novacelula = (TCelula*) malloc(sizeof(TCelula)); //Alocamos a celula na memoria
     TCelula *antecessor = (Lista -> pPrimeiro);
     int horario;
+
     novacelula->Voo.vid = Voo.vid;
     novacelula->Voo.horaDecolagem = Voo.horaDecolagem;
     novacelula->Voo.minutosDecolagem = Voo.minutosDecolagem;
@@ -51,36 +61,42 @@ void InserirNovo(TLista *Lista, TVoo Voo){
     strcpy(novacelula->Voo.aeroportoPouso,Voo.aeroportoPouso);
     novacelula->Voo.identificadorPista = Voo.identificadorPista;
 
-    horario = (novacelula -> Voo.minutosDecolagem + (novacelula -> Voo.horaDecolagem * 60));
-    while(horario > (antecessor -> pProximo -> Voo.minutosDecolagem + (antecessor -> pProximo -> Voo.horaDecolagem*60))){
-        antecessor = antecessor -> pProximo;
+    horario = (novacelula -> Voo.minutosDecolagem + (novacelula -> Voo.horaDecolagem * 60)); // A variavel horario recebe um int dos minutos somados com as horas convertidas em minutos
+    while(horario > (antecessor -> pProximo -> Voo.minutosDecolagem + (antecessor -> pProximo -> Voo.horaDecolagem*60))){ // Comenta aqui saulo
+        antecessor = antecessor -> pProximo;// Comenta aqui saulo
     }
-    novacelula -> pProximo = antecessor -> pProximo;
-    antecessor -> pProximo = novacelula;
+    novacelula -> pProximo = antecessor -> pProximo; // Comenta aqui saulo
+    antecessor -> pProximo = novacelula; // Comenta aqui saulo
     printf("====================================================================\n\n");
     printf("              >>> Voo Cadastrado com o VID: %d <<<\n\n", novacelula->Voo.vid);
     printf("====================================================================\n\n");
-    return;
+    return; //Finaliza a função
   }
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
+//--------------------------------------------------------------------------------------------------
+//Busca o vôo pelo identificador e não o remove.
 //Aqui busco o voo pelo identificador e a função retorna o ponteiro da célula que contém tal voo
 TCelula *ProcurarVoo(TLista *pLista, int Id){
-    TCelula *retorno = pLista -> pPrimeiro ;
+    TCelula *retorno = pLista -> pPrimeiro;
 
-    while(retorno->pProximo!=NULL){
-      if (retorno -> pProximo->Voo.vid == Id){
+    while(retorno->pProximo!=NULL){ // Enquanto o proximo de retorno for diferente de NULL
+      if (retorno -> pProximo->Voo.vid == Id){ // Comenta aqui saulo
         return retorno->pProximo;
       }
       retorno = retorno->pProximo;
       }
   return NULL;
 }
-//Aqui fazemos o uso da função ProcuraVoo para encontrar o voo a ser removido e também buscamos o
-//seu antecessor(que contém seu endereço), para pegar o endereço guardado na célula a ser
-//removida no seu antecessor e depois liberar a memória ocupada pela célula removida.
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//Função para buscar o vôo pelo identificador, remover da lista e o retornar.
+
+/*Aqui fazemos o uso da função ProcuraVoo para encontrar o voo a ser removido e também buscamos o
+seu antecessor(que contém seu endereço), para pegar o endereço guardado na célula a ser
+removida no seu antecessor e depois liberar a memória ocupada pela célula removida. */
 int RemoverVoo(TLista *pLista, int Id){
   TCelula *CelulaaRemover= NULL, *Antecessor = NULL;
   CelulaaRemover = ProcurarVoo(pLista, Id);
@@ -105,6 +121,10 @@ int RemoverVoo(TLista *pLista, int Id){
     return 0;
   }
 }
+//--------------------------------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------------------------------
+//Função para imprimir os voos na lista
 void ImprimirLVoos(TLista Lista) {
   TCelula* Aux; Aux = Lista.pPrimeiro -> pProximo;
    while (Aux != NULL) {
@@ -117,3 +137,5 @@ void ImprimirLVoos(TLista Lista) {
      printf("Identificador de Pista: %d\n\n", Aux ->Voo.identificadorPista);
 
      Aux = Aux -> pProximo; } }
+
+//--------------------------------------------------------------------------------------------------

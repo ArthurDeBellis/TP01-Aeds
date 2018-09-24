@@ -5,7 +5,7 @@
 #include "../Libs/voo.h"
 
 //Função inicia
-void IniciaVoo(TVoo *Voo)
+void IniciaVoo(TVoo *Voo) // Inicia o Voo com tudo zerado
 {
   Voo -> vid = 0;
   Voo -> horaDecolagem = 0;
@@ -15,7 +15,6 @@ void IniciaVoo(TVoo *Voo)
   strcpy(Voo -> aeroportoDecolagem, "");
   strcpy(Voo -> aeroportoPouso, "");
   Voo -> identificadorPista = 0;
-
 }
 //Função Imprimir
 void ImprimirTVoo(TVoo Voo)
@@ -30,37 +29,37 @@ void ImprimirTVoo(TVoo Voo)
 }
 
 /*--------------------------------------------------------------------------------------*/
-                                    //Funções Get
+                              //Funções Get: Funções de leitura
 /*--------------------------------------------------------------------------------------*/
 
 //Função para ler o vid
 int GetVid(TVoo Voo)
 {
-  return (Voo.vid);
+  return (Voo.vid); //Retorna o vid cadastrado
 }
 
 //Função para ler a hora da decolagem
 int GetHrDecolagem(TVoo Voo)
 {
-  return (Voo.horaDecolagem);
+  return (Voo.horaDecolagem); //Retorna a hora de decolagem cadastrada
 }
 
 //Função para ler os minutos da decolagem
 int GetMinutosDecolagem(TVoo Voo)
 {
-  return (Voo.minutosDecolagem);
+  return (Voo.minutosDecolagem); //Retorna os minutos de decolagem cadastrados
 }
 
 //Função para ler a hora do pouso
 int GetHoraPouso(TVoo Voo)
 {
-  return (Voo.horaPouso);
+  return (Voo.horaPouso); //Retorna a hora de pouso cadastrada
 }
 
 //Função para ler o vid
 int GetMinutosPouso(TVoo Voo)
 {
-  return (Voo.minutosPouso);
+  return (Voo.minutosPouso); //Retorna os minutos de pouso cadastrados
 }
 
 //Função para ler o aeroporto de decolagem
@@ -68,7 +67,7 @@ char* GetAeroportoDecolagem(TVoo Voo)
 {
   char* p;
   p = Voo.aeroportoDecolagem;
-  return p;
+  return p; //Retorna um ponteiro para o aeroporto de decolagem cadastrado;
 }
 
 //Função para ler o aeroporto de pouso
@@ -76,31 +75,29 @@ char* GetAeroportoPouso(TVoo Voo)
 {
   char* p;
   p = Voo.aeroportoPouso;
-  return p;
+  return p;  //Retorna um ponteiro para o aeroporto de decolagem cadastrado;
 }
 
 //Função para ler o identificador da pista
 int GetIdPista(TVoo Voo)
 {
-  return (Voo.identificadorPista);
+  return (Voo.identificadorPista); //Retorna o indentificador da pista cadastrado
 }
 
 /*--------------------------------------------------------------------------------------*/
-                                //Funções Set:
+                             //Funções Set: Funções de alteração
 /*--------------------------------------------------------------------------------------*/
 
 //Função para alterar o vid
 void SetVid(TVoo *Voo)
 {
-  //srand(time(NULL));
-  Voo -> vid = (rand()%1000);
-  //srand(time(NULL));
+  Voo -> vid = (rand()%10000); // Cadastra um vid aleatorio entre 10000 números
 }
 
 //Função para alterar a hora de decolagem
 void SetHrDecolagem(TVoo *Voo, int horaDecolagem)
 {
-  Voo -> horaDecolagem = horaDecolagem;
+  Voo -> horaDecolagem = horaDecolagem; 
 }
 
 //Função para alterar os minutos de decolagem

@@ -210,14 +210,14 @@ int main(){
     else if(modo == 2){
       FILE *arq;
       menu_arquivo();
-      scanf("%s", nomeArquivo); 
+      scanf("%s", nomeArquivo);
       printf("\n");
       arq = fopen(nomeArquivo, "r"); //Abertura do arquivo
 
       if(arq == NULL){
         printf("O arquivo digitado não foi encontrado.\n");
       }else{
-        while(feof(arq) != 1){
+        while(feof(arq) != 1){ //Enquanto não for o fim do arquivo, ele mantém o while, quando chegar no fim, retorna 1
           fscanf(arq,"%c", &p);
           p = toupper(p);
           intOperador = p - 64;

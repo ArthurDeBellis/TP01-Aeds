@@ -89,7 +89,7 @@ int main(){
         E finalmente:
         s -> 19, que por fim indica que se deseja parar a execução do programa.
         */
-        scanf(" %c", &op);
+        scanf("%c", &op);
         op = toupper(op);
         intOperador = op - 64;
 

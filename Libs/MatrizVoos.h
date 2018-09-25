@@ -20,6 +20,7 @@ typedef struct
 /*--------------------------------------------------------------------------------------*/
 
 void IniciaMatriz(TipoMatriz *Matriz); //Inicializa a estrutura de dados do TAD
+void AtualizaMatriz(TipoMatriz *Matriz);//Salva a hora e data da última atualização na matriz
 void InserirMVoo(TipoMatriz *Matriz, TVoo *voo); //Insere informações de um voo na matriz
 void RemoverMVoo(TipoMatriz *Matriz, int vid); //Remove um voo a partir do indentificador de voo
 int ProcurarMVoo(TipoMatriz *Matriz, int vid); //Procura um voo a partir do identificador de voo

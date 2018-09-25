@@ -25,6 +25,18 @@ void IniciaMatriz(TipoMatriz *Matriz){
   Matriz -> HoradaUltimaAtualizacao = 0;
   Matriz -> MinutosUltimaAtualizacao = 0;
 }
+//Atualiza o horário e data de atualização da matriz
+void AtualizaMatriz(TipoMatriz *Matriz){
+  time_t tp;
+  struct tm lt;
+  time(&tp);
+  lt = *localtime(&tp);
+  Matriz->dia = lt.tm_mday;
+  Matriz->mes = lt.tm_mon;
+  Matriz->ano = lt.tm_year;
+  Matriz->HoradaUltimaAtualizacao =  lt.tm_hour;
+  Matriz->MinutosUltimaAtualizacao = lt.tm_min;
+}
 //---------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------
@@ -38,6 +50,7 @@ void InserirMVoo(TipoMatriz *Matriz, TVoo *voo){
   InserirNovo(&Matriz->Matriz[i][j].Lista, *voo);
   SetNumVoo(&Matriz->Matriz[i][j]);
   SetHreMntsLast(&Matriz->Matriz[i][j]);
+  AtualizaMatriz(Matriz);
 }
 void RemoverMVoo(TipoMatriz *Matriz, int vid){
   int i,j;
@@ -47,6 +60,7 @@ void RemoverMVoo(TipoMatriz *Matriz, int vid){
       lista = &Matriz->Matriz[i][j].Lista;
       if(RemoverVoo(lista, vid)){
         SetHreMntsLast(&Matriz->Matriz[i][j]);
+        AtualizaMatriz(Matriz);
         return;
       }
 

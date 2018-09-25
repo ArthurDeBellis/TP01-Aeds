@@ -5,29 +5,31 @@
 
 //Definido a struct
 typedef struct {
-  //Lista do tipo TLista, definido no TAD Lista_de_Voos
-  TLista Lista;
-  //Numero total de voos na lista
-  int NumeroVoos;
-  //Hora da ultima atualização
-  int HrLast;
-  //Minutos da ultima atualização
-  int MntsLast;
+  TLista Lista; //Lista do tipo TLista, definido no TAD Lista_de_Voos
+  int NumeroVoos; //Numero total de voos na lista
+  int HrLast; //Hora da ultima atualização
+  int MntsLast; //Minutos da ultima atualização
 }ItemMatriz;
 
-void IniciaItem (ItemMatriz *Item);
-void ImprimirItem(ItemMatriz Item);
-/*Funções SET*/
 
-void SetLista(ItemMatriz *Item);
-void SetNumVoo(ItemMatriz *Item);
-void SetHreMntsLast(ItemMatriz *Item);
+void IniciaItem (ItemMatriz *Item); // Função para Iniciar o item
+void ImprimirItem(ItemMatriz Item); // Função para Imprimir o item
 
-/*Funções GET*/
+/*--------------------------------------------------------------------------------------*/
+                              //Funções Set: Funções de alteração
+/*--------------------------------------------------------------------------------------*/
 
-TLista GetLista(ItemMatriz Item);
-int GetNumVoo(ItemMatriz Item);
-int GetHrLast(ItemMatriz Item);
-int GetMntsLast(ItemMatriz Item);
+void SetLista(ItemMatriz *Item); //Função para alterar a lista cadastrada
+void SetNumVoo(ItemMatriz *Item); //Função para alterar o numero de voos cadastrados
+void SetHreMntsLast(ItemMatriz *Item); //Função para alterar as horas e minutos de atualização cadastrados
+
+/*--------------------------------------------------------------------------------------*/
+                              //Funções Get: Funções de leitura
+/*--------------------------------------------------------------------------------------*/
+
+TLista GetLista(ItemMatriz Item); //Função para ler a lista cadastrada
+int GetNumVoo(ItemMatriz Item); //Função para alterar o numero de voos cadastrados
+int GetHrLast(ItemMatriz Item); //Função para ler a hora de atualização cadastrada
+int GetMntsLast(ItemMatriz Item); //Função para ler os minutos de atualização cadastrada
 
 #endif

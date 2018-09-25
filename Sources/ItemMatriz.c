@@ -5,6 +5,7 @@
 #include "../Libs/ListadeVoos.h"
 #include "../Libs/ItemMatriz.h"
 
+// Função para Iniciar o item
 void IniciaItem (ItemMatriz *Item){
     Item->Lista.pPrimeiro = NULL;
     Item->Lista.pUltimo = NULL;
@@ -12,8 +13,9 @@ void IniciaItem (ItemMatriz *Item){
     Item->HrLast = 0;
     Item->MntsLast = 0;
     SetLista(Item);
-}
+}// Iniciamos o item com tudo zerado
 
+// Função para Imprimir o item
 void ImprimirItem(ItemMatriz Item){
   ImprimirLVoos(Item.Lista);
   SetNumVoo(&Item);
@@ -21,13 +23,20 @@ void ImprimirItem(ItemMatriz Item){
   printf("Horario da Ultima Atualização: %d:%d\n", Item.HrLast, Item.MntsLast);
 }
 
-//Funções set
-//Em SetNumVoo percorrerei a lista com loop while, assim ao final obtenho o tamanho da lista
-//linear
+/*--------------------------------------------------------------------------------------*/
+                              //Funções Set: Funções de alteração
+/*--------------------------------------------------------------------------------------*/
+
+//------------------------------------------------------------------------------------------
+//Função para alterar a lista cadastrada
 void SetLista(ItemMatriz *Item){
     IniciaLista(&Item->Lista);
 }
-void SetNumVoo(ItemMatriz *Item){
+//------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------
+//Função para alterar o numero de voos cadastrados
+void SetNumVoo(ItemMatriz *Item){ //Em SetNumVoo percorrerei a lista com loop while, assim ao final obtenho o tamanho da lista linear
     TCelula *Contador = NULL;
     int tamanho = 0;
     Contador = Item->Lista.pPrimeiro;
@@ -37,8 +46,12 @@ void SetNumVoo(ItemMatriz *Item){
     }
     Item->NumeroVoos = tamanho;
 }
-//nessa função eu uso a estrutura tm para pegar a hora e minutos da última alteração na lista
-void SetHreMntsLast(ItemMatriz *Item){
+//------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------
+//Função para alterar as horas e minutos de atualização cadastrados
+
+void SetHreMntsLast(ItemMatriz *Item){ //Nessa função eu uso a estrutura tm para pegar a hora e minutos da última alteração na lista
     struct tm *horarioatual;
     time_t momentoatual;
     momentoatual= time(NULL);
@@ -48,17 +61,24 @@ void SetHreMntsLast(ItemMatriz *Item){
     Item->MntsLast = horarioatual->tm_min;
 
 }
+//------------------------------------------------------------------------------------------
 
-//Funções get
+/*--------------------------------------------------------------------------------------*/
+                              //Funções Get: Funções de leitura
+/*--------------------------------------------------------------------------------------*/
+ //Função para ler a lista cadastrada
 TLista GetLista(ItemMatriz Item){
-    return Item.Lista;
+    return Item.Lista; //Retorna a lista
 }
+//Função para alterar o numero de voos cadastrados
 int GetNumVoo(ItemMatriz Item){
-    return Item.NumeroVoos;
+    return Item.NumeroVoos; //Retorna o numero de voos
 }
+//Função para ler a hora de atualização cadastrada
 int GetHrLast(ItemMatriz Item){
-    return Item.HrLast;
+    return Item.HrLast; //Retorna a hora de atualização
 }
+//Função para ler os minutos de atualização cadastrada
 int GetMntsLast(ItemMatriz Item){
-    return Item.MntsLast;
+    return Item.MntsLast; //Retorna os minutos de atualização
 }

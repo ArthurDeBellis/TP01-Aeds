@@ -62,11 +62,11 @@ void InserirNovo(TLista *Lista, TVoo Voo){
     novacelula->Voo.identificadorPista = Voo.identificadorPista;
 
     horario = (novacelula -> Voo.minutosDecolagem + (novacelula -> Voo.horaDecolagem * 60)); // A variavel horario recebe um int dos minutos somados com as horas convertidas em minutos
-    while(horario > (antecessor -> pProximo -> Voo.minutosDecolagem + (antecessor -> pProximo -> Voo.horaDecolagem*60))){ // Comenta aqui saulo
-        antecessor = antecessor -> pProximo;// Comenta aqui saulo
+    while(horario > (antecessor -> pProximo -> Voo.minutosDecolagem + (antecessor -> pProximo -> Voo.horaDecolagem*60))){ // Compara a hora de decolagem do novo voo da lista com cada um já pertencente à lista, em ordem crescente.
+        antecessor = antecessor -> pProximo;// Pega o endereço da próxima célula
     }
-    novacelula -> pProximo = antecessor -> pProximo; // Comenta aqui saulo
-    antecessor -> pProximo = novacelula; // Comenta aqui saulo
+    novacelula -> pProximo = antecessor -> pProximo; // Pega o endereço da voo com horario de decolagem maior que o da nova celula
+    antecessor -> pProximo = novacelula; // Célula com último voo menor aponta para nova celula
     printf("====================================================================\n\n");
     printf("              >>> Voo Cadastrado com o VID: %d <<<\n\n", novacelula->Voo.vid);
     printf("====================================================================\n\n");
@@ -82,7 +82,7 @@ TCelula *ProcurarVoo(TLista *pLista, int Id){
     TCelula *retorno = pLista -> pPrimeiro;
 
     while(retorno->pProximo!=NULL){ // Enquanto o proximo de retorno for diferente de NULL
-      if (retorno -> pProximo->Voo.vid == Id){ // Comenta aqui saulo
+      if (retorno -> pProximo->Voo.vid == Id){ // Compara o vid buscado com cada vid da lista, e se o encontra, retorna o endereço dessa célula
         return retorno->pProximo;
       }
       retorno = retorno->pProximo;

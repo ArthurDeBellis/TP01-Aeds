@@ -192,6 +192,8 @@ void ImprimirMatriz(TipoMatriz Matriz){
     printf("====================================================================\n\n");
   }
 }
+//Percorre a matriz buscando o item com mais itens, depois percorre comparando o valor encontrado
+//com cada item da matriz, assim se houver mais de um item com mais itens, os dois serão impressos
 void EncontrarMaiorHorario(TipoMatriz *Matriz){
   int linha=0, coluna=0, numerodevoos, maior;
   for(linha=0; linha<24; linha++){
@@ -225,6 +227,7 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
     printf("====================================================================\n\n");
   }
 }
+//Funciona do mesmo jeito que a função anterior, porém essa busca o item com menos voos, não contando com os itens zerados
 void EncontrarMenorHorario(TipoMatriz *Matriz){
     int linha=0, coluna=0, numerodevoos, menor =10000;
     for(linha=0; linha<24; linha++){
@@ -258,6 +261,7 @@ void EncontrarMenorHorario(TipoMatriz *Matriz){
       printf("====================================================================\n\n");
     }
 }
+//Busca o menor horário e compara com cada item da lista, para imprimir todos os itens que possuem tal horário
 void EncontrarListaMenosRecente(TipoMatriz *Matriz){
   int horas= 0, minutos = 0, minutoMaisRecente =0, horaMaisRecente=0, linha, coluna;
   for(linha=0; linha<24; linha++){
@@ -291,6 +295,7 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
       printf("====================================================================\n\n");
     }
 }
+//Funciona da mesma forma que o subprograma acima, porém busca e compara o maior horário
 void EncontrarListaMaisRecente(TipoMatriz *Matriz){
     int horas= 0, minutos = 0, minutoMenosRecente =59, horaMenosRecente=23, linha, coluna;
     for(linha=0; linha<24; linha++){
@@ -325,16 +330,18 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
         printf("====================================================================\n\n");
       }
 }
+//Confere se a quantidade de itens vazios é pelo menos 2 terços da matriz.
 void MatrizEsparca(TipoMatriz *Matriz){
     int contador =0, linha, coluna,nVoos;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
             nVoos = Matriz->Matriz[linha][coluna].NumeroVoos;
-                contador+=nVoos;
-
+            if(nVoos==0){
+                contador++;
+            }
         }
     }
-    if(contador<384){
+    if(contador>=384){
       printf("====================================================================\n\n");
       printf("                        >>> É esparça. <<<\n\n");
       printf("====================================================================\n\n");

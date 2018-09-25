@@ -45,8 +45,10 @@ int main(){
       /*
       O scanf a seguir identifica o caracter digitado pelo usuário e então
       usando a função toupper o caracter é convertido para maiúsculo, após
-      este processo, ele é convertido para int e decrescido 64 unidades, o que
-      no final faz com que todos sejam "iguais" a caracteres minúsculos.
+      este processo, ele é convertido para int e, sendo os caracteres letras
+      maiúsculas, elas, ao serem convertidas para int tem seu valor a partir
+      de 65, após isso, ao decrescer 64 unidades, obtemos valores a partir de
+      1.
 
       Ao fim é conferido se o intConfirma == 19, o que significaria que a pessoa
       digitou 'S' ou 's', indicando que ela realmente quer parar a execução

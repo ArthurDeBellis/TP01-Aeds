@@ -20,7 +20,7 @@ typedef struct {
 
 void IniciaLista(TLista *pLista); //Função inicializa, que irá dar a célula cabeça para a lista.
 
-int Vazia(TLista Lista); //Função para ver se a lista é vazia
+int ListaVazia(TLista Lista); //Função para ver se a lista é vazia
 
 void InserirNovo(TLista *Lista, TVoo Voo); //Função para inserir a celula na posição correta
 

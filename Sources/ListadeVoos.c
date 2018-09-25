@@ -33,7 +33,7 @@ void InserirUltimo(TLista *Lista, TVoo Voo)
 
 //--------------------------------------------------------------------------------------------
 //Função para ver se a lista é vazia
-int Vazia(TLista Lista)
+int ListaVazia(TLista Lista)
 {
   return (Lista.pPrimeiro == Lista.pUltimo); //Retorna 1 se for vazia
 }
@@ -42,7 +42,7 @@ int Vazia(TLista Lista)
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Função para inserir a celula na posição correta
 void InserirNovo(TLista *Lista, TVoo Voo){
-  if(Vazia((*Lista))==1 || ((Voo.horaDecolagem * 60 )+Voo.minutosDecolagem) >= ((Lista->pUltimo->Voo.horaDecolagem *60 )+ Lista->pUltimo->Voo.minutosDecolagem)){
+  if(ListaVazia((*Lista))==1 || ((Voo.horaDecolagem * 60 )+Voo.minutosDecolagem) >= ((Lista->pUltimo->Voo.horaDecolagem *60 )+ Lista->pUltimo->Voo.minutosDecolagem)){
     InserirUltimo(Lista, Voo); //Chamamos a função para inserir na ultima posição caso a lista seja vazia ou o novo voo seja maior que o ultimo
     return; //Finaliza a função
   }

@@ -10,9 +10,8 @@
 #include "../Libs/menu.h"
 
 int main(){
-  srand(time(NULL));
+  srand(time(NULL)); //Utilizamos esse comando para podermos usar numeros aleatorios para o vid
 
-  FILE *arq;
   //Declaração dos Tipos Abstratos de Dados (TADs).
   TipoMatriz Principal;
   TVoo vooReserva;
@@ -25,7 +24,8 @@ int main(){
 
   //Caracteres que recebem as operações e confirmação de saída.
   char op, confirma;
-
+  //Caracter para execução do arquivo
+  char p;
   //Variáveis para receber o valor numérico dos caracteres setados.
   int intConfirma = 0, intOperador = 0;
 
@@ -92,7 +92,7 @@ int main(){
         intOperador = op - 64;
 
         switch (intOperador){
-          case 1:
+          case 1: //Opção a
             IniciaMatriz(&Principal);
             printf("\n");
             printf("====================================================================\n");
@@ -100,7 +100,7 @@ int main(){
             printf("====================================================================\n\n");
             break;
 
-          case 2:
+          case 2: //Opção b
             IniciaVoo(&vooReserva);
             SetVid(&vooReserva);
 
@@ -132,65 +132,65 @@ int main(){
             InserirMVoo(&Principal, &vooReserva);
             break;
 
-          case 3:
+          case 3: //Opção c
             printf("Digite o Vid do voo a ser removido: ");
             scanf("%d", &vid);
             printf("\n");
             RemoverMVoo(&Principal, vid);
             break;
 
-          case 4:
+          case 4: //Opção d
             printf("Digite o Vid do voo a ser pesquisado: ");
             scanf("%d", &vid);
             printf("\n");
             ProcurarMVoo(&Principal, vid);
             break;
 
-          case 5:
+          case 5: //Opção e
             printf("Horário de Decolagem no formato HH:MM - ");
             scanf("%d:%d",&hrDecolagem, &minDecolagem);
             printf("Horário de Pouso no formato HH:MM - ");
             scanf("%d:%d",&hrPouso, &minPouso);
-            ImprimirVoo1(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
+            ImprimirVooHrDecolagemHrPouso(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
             break;
 
-          case 6:
+          case 6: //Opção f
             printf("Horário de Decolagem no formato HH:MM - ");
             scanf("%d:%d", &hrDecolagem, &minDecolagem);
-            ImprimirVoo2(Principal, hrDecolagem, minDecolagem);
+            ImprimirVooHrDecolagem(Principal, hrDecolagem, minDecolagem);
             break;
 
-          case 7:
+          case 7: //Opção g
             printf("Horário de Pouso no formato HH:MM - ");
             scanf("%d:%d", &hrPouso, &minPouso);
-            ImprimirVoo3(Principal, hrPouso, minPouso);
+            ImprimirVooHrPouso(Principal, hrPouso, minPouso);
             break;
 
-          case 8:
+          case 8: //Opção h
             ImprimirMatriz(Principal);
             break;
 
-          case 9:
+          case 9: //Opção i
             EncontrarMaiorHorario(&Principal);
             break;
 
-          case 10:
+          case 10: //Opção j
             EncontrarMenorHorario(&Principal);
             break;
 
-          case 11:
+          case 11: //Opção k
             EncontrarListaMaisRecente(&Principal);
             break;
 
-          case 12:
+          case 12: //Opção l
             EncontrarListaMenosRecente(&Principal);
             break;
 
-          case 13:
+          case 13: //Opção m
             MatrizEsparca(&Principal);
             break;
 
-          case 19:
+          case 19: //Opção s
             printf("Você parou a execução do programa!\n");
             /*
             Caso o usuário resolva para o programa, o operadorAuxiliar recebe
@@ -201,25 +201,101 @@ int main(){
             operadorAuxiliar = 0;
             break;
 
-          default:
-            //Caso o usuário coloque um uma opção inválida
+          default: //Caso o usuário coloque um uma opção inválida
             printf("Opção inválida\n");
             break;
         }
       }
     }
     else if(modo == 2){
+      FILE *arq;
       menu_arquivo();
-      scanf("%s", nomeArquivo);
+      scanf("%s", nomeArquivo); 
       printf("\n");
-      arq = fopen(nomeArquivo, "r");
-      if(!arq){
+      arq = fopen(nomeArquivo, "r"); //Abertura do arquivo
+
+      if(arq == NULL){
         printf("O arquivo digitado não foi encontrado.\n");
+      }else{
+        while(feof(arq) != 1){
+          fscanf(arq,"%c", &p);
+          p = toupper(p);
+          intOperador = p - 64;
+          switch (intOperador){
+            case 1: //Opção a
+              IniciaMatriz(&Principal);
+              printf("\n");
+              printf("====================================================================\n");
+              printf("\n               >>> A MATRIZ FOI INICIALIZADA! <<<\n\n");
+              printf("====================================================================\n\n");
+              break;
+
+            case 2: //Opção b
+              IniciaVoo(&vooReserva);
+              SetVid(&vooReserva);
+
+              fscanf(arq,"%d:%d", &vooReserva.horaDecolagem, &vooReserva.minutosDecolagem);
+              fscanf(arq,"%d:%d", &vooReserva.horaPouso, &vooReserva.minutosPouso);
+              fscanf(arq,"%s", vooReserva.aeroportoDecolagem);
+              fscanf(arq,"%s", vooReserva.aeroportoPouso);
+              fscanf(arq,"%d", &vooReserva.identificadorPista);
+
+              InserirMVoo(&Principal, &vooReserva);
+              break;
+
+            case 3: //Opção c
+              fscanf(arq,"%d", &vid);
+              RemoverMVoo(&Principal, vid);
+              break;
+
+            case 4: //Opção d
+              fscanf(arq,"%d", &vid);
+              ProcurarMVoo(&Principal, vid);
+              break;
+
+            case 5: //Opção e
+              fscanf(arq,"%d:%d",&hrDecolagem, &minDecolagem);
+              fscanf(arq,"%d:%d",&hrPouso, &minPouso);
+              ImprimirVooHrDecolagemHrPouso(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
+              break;
+
+            case 6: //Opção f
+              fscanf(arq,"%d:%d", &hrDecolagem, &minDecolagem);
+              ImprimirVooHrDecolagem(Principal, hrDecolagem, minDecolagem);
+              break;
+
+            case 7: //Opção g
+              fscanf(arq,"%d:%d", &hrPouso, &minPouso);
+              ImprimirVooHrPouso(Principal, hrPouso, minPouso);
+              break;
+
+            case 8: //Opção h
+              ImprimirMatriz(Principal);
+              break;
+
+            case 9: //Opção i
+              EncontrarMaiorHorario(&Principal);
+              break;
+
+            case 10: //Opção j
+              EncontrarMenorHorario(&Principal);
+              break;
+
+            case 11: //Opção k
+              EncontrarListaMaisRecente(&Principal);
+              break;
+
+            case 12: //Opção l
+              EncontrarListaMenosRecente(&Principal);
+              break;
+
+            case 13: //Opção m
+              MatrizEsparca(&Principal);
+              break;
+              fclose(arq); //Encerramento do arquivo
+          }
+        }
       }
-      /*
-      TODO a leitura do arquivo e procedimento das funções
-      */
-      fclose(arq);
     }
   }
   return 0;

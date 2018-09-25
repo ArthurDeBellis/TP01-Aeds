@@ -276,8 +276,8 @@ void EncontrarMenorHorario(TipoMatriz *Matriz){
     }
 }
 //Busca o menor horário e compara com cada item da lista, para imprimir todos os itens que possuem tal horário
-void EncontrarListaMenosRecente(TipoMatriz *Matriz){
-  int horas= 0, minutos = 0, minutoMaisRecente =0, horaMaisRecente=0, linha, coluna;
+void EncontrarListaMaisRecente(TipoMatriz *Matriz){
+  int horas= 0, minutos = 0, minutoMaisRecente =0, horaMaisRecente=-1, linha, coluna;
   for(linha=0; linha<24; linha++){
       for(coluna =0; coluna<24; coluna++){
           horas = Matriz->Matriz[linha][coluna].HrLast*60;
@@ -290,14 +290,14 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
           }
       }
     }
-    if(horaMaisRecente!=0){
+    if(horaMaisRecente!=-1){
       for(linha=0; linha<24; linha++){
           for(coluna =0; coluna<24; coluna++){
             horas = Matriz->Matriz[linha][coluna].HrLast*60;
             minutos = Matriz->Matriz[linha][coluna].MntsLast;
             if((horas+minutos)==(horaMaisRecente+minutoMaisRecente)){
               printf("====================================================================\n\n");
-              printf("Menos recente: i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
+              printf("Mais recente: i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
               printf("====================================================================\n\n");
             }
           }
@@ -310,7 +310,7 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
     }
 }
 //Funciona da mesma forma que o subprograma acima, porém busca e compara o maior horário
-void EncontrarListaMaisRecente(TipoMatriz *Matriz){
+void EncontrarListaMenosRecente(TipoMatriz *Matriz){
     int horas= 0, minutos = 0, minutoMenosRecente =59, horaMenosRecente=23, linha, coluna;
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
@@ -331,7 +331,7 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
               minutos = Matriz->Matriz[linha][coluna].MntsLast;
               if((horas+minutos)==(horaMenosRecente+minutoMenosRecente)){
                 printf("====================================================================\n\n");
-                printf("Mais recente: i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
+                printf("Menos recente: i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
                 printf("====================================================================\n\n");
 
               }

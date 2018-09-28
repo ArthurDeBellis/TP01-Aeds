@@ -89,7 +89,7 @@ int main(){
         E finalmente:
         s -> 19, que por fim indica que se deseja parar a execução do programa.
         */
-        scanf("%c", &op);
+        scanf(" %c", &op);
         op = toupper(op);
         intOperador = op - 64;
 
@@ -153,22 +153,31 @@ int main(){
             scanf("%d:%d",&hrDecolagem, &minDecolagem);
             printf("Horário de Pouso no formato HH:MM - ");
             scanf("%d:%d",&hrPouso, &minPouso);
+            printf("\n====================================================================\n");
+            printf("Voos cadastrados no horário de decolagem de %.2d:%.2d às %.2d:%.2d ", hrDecolagem,00,hrDecolagem,59);
+            printf("\ne no horário de pouso de %.2d:%.2d às %.2d:%.2d\n", hrPouso,00,hrPouso,59);
             ImprimirVooHrDecolagemHrPouso(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
             break;
 
           case 6: //Opção f
             printf("Horário de Decolagem no formato HH:MM - ");
             scanf("%d:%d", &hrDecolagem, &minDecolagem);
+            printf("\n====================================================================\n");
+            printf(" Voos cadastrados no horário de decolagem de %.2d:%.2d às %.2d:%.2d\n", hrDecolagem,00,hrDecolagem,59);
             ImprimirVooHrDecolagem(Principal, hrDecolagem, minDecolagem);
             break;
 
           case 7: //Opção g
             printf("Horário de Pouso no formato HH:MM - ");
             scanf("%d:%d", &hrPouso, &minPouso);
+            printf("\n====================================================================\n");
+            printf("   Voos cadastrados no horário de pouso de %.2d:%.2d às %.2d:%.2d\n", hrPouso,00,hrPouso,59);
             ImprimirVooHrPouso(Principal, hrPouso, minPouso);
             break;
 
           case 8: //Opção h
+            printf("====================================================================\n");
+            printf("                   Voos cadastrados Na Matriz\n");
             ImprimirMatriz(Principal);
             break;
 
@@ -258,20 +267,29 @@ int main(){
             case 5: //Opção e
               fscanf(arq,"%d:%d",&hrDecolagem, &minDecolagem);
               fscanf(arq,"%d:%d",&hrPouso, &minPouso);
+              printf("\n====================================================================\n");
+              printf("Voos cadastrados no horário de decolagem de %.2d:%.2d às %.2d:%.2d ", hrDecolagem,00,hrDecolagem,59);
+              printf("\ne no horário de pouso de %.2d:%.2d às %.2d:%.2d\n", hrPouso,00,hrPouso,59);
               ImprimirVooHrDecolagemHrPouso(Principal, hrDecolagem, minDecolagem, hrPouso, minPouso);
               break;
 
             case 6: //Opção f
               fscanf(arq,"%d:%d", &hrDecolagem, &minDecolagem);
+              printf("\n====================================================================\n");
+              printf(" Voos cadastrados no horário de decolagem de %.2d:%.2d às %.2d:%.2d\n", hrDecolagem,00,hrDecolagem,59);
               ImprimirVooHrDecolagem(Principal, hrDecolagem, minDecolagem);
               break;
 
             case 7: //Opção g
               fscanf(arq,"%d:%d", &hrPouso, &minPouso);
+              printf("\n====================================================================\n");
+              printf("   Voos cadastrados no horário de pouso de %.2d:%.2d às %.2d:%.2d\n", hrPouso,00,hrPouso,59);
               ImprimirVooHrPouso(Principal, hrPouso, minPouso);
               break;
 
             case 8: //Opção h
+              printf("====================================================================\n");
+              printf("                   Voos cadastrados Na Matriz\n");
               ImprimirMatriz(Principal);
               break;
 

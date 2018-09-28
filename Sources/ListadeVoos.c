@@ -26,7 +26,7 @@ void InserirUltimo(TLista *Lista, TVoo Voo)
   Lista -> pUltimo -> Voo = Voo;
   Lista -> pUltimo -> pProximo = NULL;
   printf("====================================================================\n\n");
-  printf("              >>> Voo Cadastrado com o VID: %d <<<\n\n", Voo.vid);
+  printf("              >>> Voo Cadastrado com o VID: %.4d <<<\n\n", Voo.vid);
   printf("====================================================================\n\n");
 }
 //--------------------------------------------------------------------------------------------

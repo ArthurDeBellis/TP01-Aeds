@@ -101,7 +101,7 @@ void ImprimirVooHrDecolagemHrPouso(TipoMatriz Matriz, int horaDecolagem, int min
   if(Matriz.Matriz[i][j].NumeroVoos != 0){
     while (pAtual != NULL){
       printf("====================================================================\n\n");
-      printf("Vid: %d\n", pAtual->Voo.vid);
+      printf("Vid: %.4d\n", pAtual->Voo.vid);
       printf("Horario de Decolagem: %.2d:%.2d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
       printf("Horario de Pouso: %.2d:%.2d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
       printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
@@ -128,7 +128,7 @@ void ImprimirVooHrDecolagem(TipoMatriz Matriz, int horaDecolagem, int minutosDec
       pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
       while (pAtual != NULL){
         printf("====================================================================\n\n");
-        printf("Vid: %d\n", pAtual->Voo.vid);
+        printf("Vid: %.4d\n", pAtual->Voo.vid);
         printf("Horario de Decolagem: %.2d:%.2d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
         printf("Horario de Pouso: %.2d:%.2d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
         printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
@@ -157,7 +157,7 @@ void ImprimirVooHrPouso(TipoMatriz Matriz, int horaPouso, int minutosPouso){
       pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
       while (pAtual != NULL){
         printf("====================================================================\n\n");
-        printf("Vid: %d\n", pAtual->Voo.vid);
+        printf("Vid: %.4d\n", pAtual->Voo.vid);
         printf("Horario de Decolagem: %.2d:%.2d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
         printf("Horario de Pouso: %.2d:%.2d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
         printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
@@ -186,7 +186,7 @@ void ImprimirMatriz(TipoMatriz Matriz){
         pAtual = Matriz.Matriz[i][j].Lista.pPrimeiro->pProximo;
         while (pAtual != NULL){
           printf("====================================================================\n\n");
-          printf("Vid: %d\n", pAtual->Voo.vid);
+          printf("Vid: %.4d\n", pAtual->Voo.vid);
           printf("Horario de Decolagem: %.2d:%.2d\n", pAtual->Voo.horaDecolagem,pAtual->Voo.minutosDecolagem);
           printf("Horario de Pouso: %.2d:%.2d\n", pAtual->Voo.horaPouso, pAtual->Voo.minutosPouso);
           printf("Aeroporto de Decolagem: %s\n", pAtual->Voo.aeroportoDecolagem);
@@ -224,16 +224,18 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
         }
       }
   if(maior!=0){
+    printf("====================================================================\n\n");
+    printf("Item com maior quantidade de voos:\n\n");
     for(linha=0; linha<24; linha++){
       for(coluna =0; coluna<24; coluna++){
         numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
         if(maior==numerodevoos){
             printf("====================================================================\n\n");
-            printf("Item com maior quantidade de voos: i = %d e j = %d e quantidade = %d\n\n", linha, coluna, maior);
-            printf("====================================================================\n\n");
+            printf("i = %d e j = %d e quantidade = %d\n\n", linha, coluna, maior);
         }
       }
     }
+    printf("====================================================================\n\n");
   }
   else{
     printf("====================================================================\n\n");
@@ -244,6 +246,8 @@ void EncontrarMaiorHorario(TipoMatriz *Matriz){
 //Funciona do mesmo jeito que a função anterior, porém essa busca o item com menos voos, não contando com os itens zerados
 void EncontrarMenorHorario(TipoMatriz *Matriz){
     int linha=0, coluna=0, numerodevoos, menor =10000;
+    printf("====================================================================\n\n");
+    printf("Item com menor quantidade de voos:\n\n");
     for(linha=0; linha<24; linha++){
         for(coluna =0; coluna<24; coluna++){
             numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
@@ -263,11 +267,11 @@ void EncontrarMenorHorario(TipoMatriz *Matriz){
             numerodevoos = Matriz->Matriz[linha][coluna].NumeroVoos;
               if(menor==numerodevoos){
                   printf("====================================================================\n\n");
-                  printf("Item com menor quantidade de voos: i = %d e j = %d e quantidade = %d\n\n", linha, coluna, menor);
-                  printf("====================================================================\n\n");
+                  printf("i = %d e j = %d e quantidade = %d\n\n", linha, coluna, menor);
               }
           }
       }
+      printf("====================================================================\n\n");
     }
     else{
       printf("====================================================================\n\n");
@@ -291,17 +295,19 @@ void EncontrarListaMaisRecente(TipoMatriz *Matriz){
       }
     }
     if(horaMaisRecente!=-1){
+      printf("====================================================================\n\n");
+      printf("Item com a faixa de horario mais recente: \n\n");
       for(linha=0; linha<24; linha++){
           for(coluna =0; coluna<24; coluna++){
             horas = Matriz->Matriz[linha][coluna].HrLast*60;
             minutos = Matriz->Matriz[linha][coluna].MntsLast;
             if((horas+minutos)==(horaMaisRecente+minutoMaisRecente)){
               printf("====================================================================\n\n");
-              printf("Mais recente: i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
-              printf("====================================================================\n\n");
+              printf("i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMaisRecente/60), minutoMaisRecente);
             }
           }
       }
+      printf("====================================================================\n\n");
     }
     else{
       printf("====================================================================\n\n");
@@ -325,18 +331,19 @@ void EncontrarListaMenosRecente(TipoMatriz *Matriz){
         }
       }
       if(horaMenosRecente!=23){
+        printf("====================================================================\n\n");
+        printf("Item com a faixa de horario menos recente: \n\n");
         for(linha=0; linha<24; linha++){
             for(coluna =0; coluna<24; coluna++){
               horas = Matriz->Matriz[linha][coluna].HrLast*60;
               minutos = Matriz->Matriz[linha][coluna].MntsLast;
               if((horas+minutos)==(horaMenosRecente+minutoMenosRecente)){
                 printf("====================================================================\n\n");
-                printf("Menos recente: i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
-                printf("====================================================================\n\n");
-
+                printf("i = %d, j = %d, horario = %.2d:%.2d\n\n", linha, coluna, (horaMenosRecente/60), minutoMenosRecente);
               }
             }
         }
+        printf("====================================================================\n\n");
       }
       else{
         printf("====================================================================\n\n");

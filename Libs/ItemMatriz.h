@@ -1,16 +1,9 @@
-#include "../Libs/voo.h"
-#include "../Libs/ListadeVoos.h"
 #ifndef ITEMMATRIZ_H
 #define ITEMMATRIZ_H
 
-//Definido a struct
-typedef struct {
-  TLista Lista; //Lista do tipo TLista, definido no TAD Lista_de_Voos
-  int NumeroVoos; //Numero total de voos na lista
-  int HrLast; //Hora da ultima atualização
-  int MntsLast; //Minutos da ultima atualização
-}ItemMatriz;
+#include "ListadeVoos.h"
 
+//Definido a struct
 
 void IniciaItem (ItemMatriz *Item); // Função para Iniciar o item
 void ImprimirItem(ItemMatriz Item); // Função para Imprimir o item

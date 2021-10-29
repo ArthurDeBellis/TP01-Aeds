@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../Libs/voo.h"
 #include "../Libs/ListadeVoos.h"
 
 /*--------------------------------------------------------------------------------------*/

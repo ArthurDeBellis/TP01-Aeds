@@ -1,19 +1,7 @@
-#include "../Libs/voo.h"
-#include "../Libs/ListadeVoos.h"
-#include "../Libs/ItemMatriz.h"
-
 #ifndef MATRIZVOOS_H
 #define MATRIZVOOS_H
 
-//Criando a struct do tipo matriz
-typedef struct
-{
-  ItemMatriz Matriz[24][24];
-  int TotalDeVoos;
-  int dia, mes, ano;
-  int HoradaUltimaAtualizacao, MinutosUltimaAtualizacao;
-}TipoMatriz;
-
+#include "ItemMatriz.h"
 
 /*--------------------------------------------------------------------------------------*/
                                        //Funções

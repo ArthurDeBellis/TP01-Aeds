@@ -1,8 +1,3 @@
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "../Libs/voo.h"
-#include "../Libs/ListadeVoos.h"
 #include "../Libs/ItemMatriz.h"
 
 // Função para Iniciar o item

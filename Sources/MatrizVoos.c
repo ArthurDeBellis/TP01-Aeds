@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include "../Libs/MatrizVoos.h"
-#include "../Libs/ItemMatriz.h"
-#include "../Libs/ListadeVoos.h"
-#include "../Libs/voo.h"
 
 /*--------------------------------------------------------------------------------------*/
                                        //Funções

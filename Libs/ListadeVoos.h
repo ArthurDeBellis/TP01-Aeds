@@ -1,18 +1,8 @@
-#include "../Libs/voo.h"
+
 #ifndef LISTADEVOOS_H
 #define LISTADEVOOS_H
 
-//Aqui eu criei a estrutura de como será cada Celula da lista, com a estrutura do vôo mais o endereço do próximo item.
-typedef struct Celula{
-  TVoo Voo;
-  struct Celula* pProximo;
-}TCelula;
-
-//Aqui criei a lista, que irá conter apenas os ponteiros da primeira e última célula.
-typedef struct {
-  TCelula* pPrimeiro;
-  TCelula* pUltimo;
-}TLista;
+#include "voo.h"
 
 /*--------------------------------------------------------------------------------------*/
                                        //Funções

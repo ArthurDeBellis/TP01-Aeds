@@ -1,17 +1,7 @@
 #ifndef VOO_H
 #define VOO_H
 
-typedef struct{
-  int vid;
-  int horaDecolagem;
-  int minutosDecolagem;
-  int horaPouso;
-  int minutosPouso;
-  char aeroportoDecolagem[5];
-  char aeroportoPouso[5];
-  int identificadorPista;
-}TVoo; //As horas e minutos foram separadas as para facilitar a execução do programa
-
+#include "estruturas.h"
 
 void IniciaVoo(TVoo *Voo); // Função para iniciar o voo
 void ImprimirTVoo(TVoo Voo); // Função para imprimir o voo

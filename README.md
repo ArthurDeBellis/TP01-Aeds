@@ -21,6 +21,6 @@ O código foi desenvolvido em 2018, porém, o teste mais atual foi feito em 2021
 
 Nenhum teste foi realizado no windows.
 
-Caso queira ler um pouco mais sobre o trabalho, a documentação do mesmo está presente na parta *Documentation*
+Caso queira ler um pouco mais sobre o trabalho, a documentação do mesmo está presente na pasta *Documentation*
 
 Sinta-se a vontade para baixar e estudar o código :)
